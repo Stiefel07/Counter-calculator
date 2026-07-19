@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kingshot Counter Tool</title>
+<style>
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:Arial,sans-serif;
+  background:linear-gradient(135deg,#142850,#1f4aa8,#5b2ca8);
+  color:#fff;
+}
+.container{
+  max-width:720px;
+  margin:20px auto;
+  padding:16px;
+}
+.card{
+  background:rgba(255,255,255,.08);
+  border-radius:18px;
+  padding:20px;
+  backdrop-filter:blur(8px);
+}
+h1{
+  color:#f7c948;
+  text-align:center;
+  margin:0;
+}
+.version{
+  text-align:center;
+  color:#ddd;
+  margin:8px 0 20px;
+}
+label{
+  display:block;
+  margin-top:14px;
+  font-weight:bold;
+}
+input,select,button{
+  width:100%;
+  padding:14px;
+  margin-top:6px;
+  border:none;
+  border-radius:10px;
+  font-size:16px;
+}
+button{
+  margin-top:22px;
+  background:#f7c948;
+  color:#111;
+  font-weight:bold;
+  cursor:pointer;
+}
+.result{
+  margin-top:20px;
+  background:#0f172a;
+  border-left:4px solid #f7c948;
+  border-radius:10px;
+  padding:16px;
+  min-height:120px;
+}
+footer{
+  text-align:center;
+  padding:18px;
+  font-size:12px;
+  color:#ddd;
+}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="card">
+<h1>⚔ Kingshot Counter Tool</h1>
+<div class="version">Version 1.1</div>
+
+<label>Language</label>
+<select id="language">
+<option value="en" selected>English</option>
+<option value="de">Deutsch</option>
+<option value="es">Español</option>
+</select>
+
+
+<label>Enemy Infantry %</label>
+<input id="enemyInf" type="number" value="33">
+
+<label>Enemy Cavalry %</label>
+<input id="enemyCav" type="number" value="33">
+
+<label>Enemy Marksmen %</label>
+<input id="enemyMar" type="number" value="34">
+
+<label>Target</label>
+<select id="target">
+<option value="castle">Castle</option>
+<option value="fortress">Fortress</option>
+</select>
+
+<label>Mode</label>
+<select id="mode">
+<option value="solo">Solo</option>
+<option value="rally">Rally</option>
+</select>
+
+<label>March Size</label>
+<select id="march">
+<option>40000</option><option>50000</option><option>60000</option>
+<option>70000</option><option>80000</option><option>90000</option>
+<option>100000</option><option>110000</option><option>120000</option>
+</select>
+
+<button onclick="calculate()">Calculate</button>
+
+<div id="result" class="result">
+<b>Ready.</b><br><br>Enter enemy troop percentages and press Calculate.
+</div>
+</div>
+</div>
+
+<footer>© 2026 Stiefel™</footer>
+
+<script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Phase 31: Engine tuning foundation
+const ENGINE_VERSION = "1.1";
+
+function tuneCounterWeights(enemy, counter){
+  const spread = Math.max(enemy.Infantry, enemy.Cavalry, enemy.Marksmen)
+               - Math.min(enemy.Infantry, enemy.Cavalry, enemy.Marksmen);
+
+  if (spread >= 25){
+    const strongest = Object.keys(counter).sort((a,b)=>counter[b]-counter[a])[0];
+    counter[strongest] += 2;
+    const keys = ["Infantry","Cavalry","Marksmen"].filter(k=>k!==strongest);
+    counter[keys[0]] -= 1;
+    counter[keys[1]] -= 1;
+  }
+
+  return validateCounter(counter);
+}
+
+// Phase 30: Counter history foundation
+const counterHistory=[];
+
+function storeCounterCalculation(enemy,counter,mode,targetType){
+  counterHistory.push({
+    timestamp:new Date().toISOString(),
+    enemy,
+    counter,
+    mode,
+    targetType
+  });
+
+  if(counterHistory.length>25){
+    counterHistory.shift();
+  }
+}
+
+// Phase 29: Diagnostics
+function analyzeCounter(enemy,counter){
+  return {
+    dominantEnemy: Object.entries(enemy).sort((a,b)=>b[1]-a[1])[0][0],
+    dominantCounter: Object.entries(counter).sort((a,b)=>b[1]-a[1])[0][0],
+    total: counter.Infantry + counter.Cavalry + counter.Marksmen
+  };
+}
+
+// Phase 28: Release optimization
+function releaseOptimize(counter){
+  // Final normalization and cleanup
+  ["Infantry","Cavalry","Marksmen"].forEach(k=>{
+    counter[k]=Math.round(counter[k]);
+  });
+
+  let sum=counter.Infantry+counter.Cavalry+counter.Marksmen;
+  if(sum!==100){
+    counter.Marksmen += 100-sum;
+  }
+
+  return counter;
+}
+
+// Phase 27: Engine refinement
+function refineCounter(enemy,counter,isRally){
+  const maxEnemy=Math.max(enemy.Infantry,enemy.Cavalry,enemy.Marksmen);
+
+  // Increase the primary counter slightly against highly specialized enemies.
+  if(maxEnemy>=60){
+    const entries=[
+      ["Infantry",counter.Infantry],
+      ["Cavalry",counter.Cavalry],
+      ["Marksmen",counter.Marksmen]
+    ].sort((a,b)=>b[1]-a[1]);
+
+    counter[entries[0][0]]+=3;
+    counter[entries[2][0]]-=3;
+  }
+
+  if(isRally){
+    counter.Infantry=Math.max(0,counter.Infantry);
+    counter.Cavalry=Math.max(0,counter.Cavalry);
+    counter.Marksmen=100-counter.Infantry-counter.Cavalry;
+  }
+
+  return validateCounter(counter);
+}
+
+// Phase 26: Validation & consistency layer
+function validateCounter(counter){
+  let vals=["Infantry","Cavalry","Marksmen"];
+  vals.forEach(k=>{
+    counter[k]=Math.max(0,Math.min(100,Math.round(counter[k]||0)));
+  });
+  const sum=counter.Infantry+counter.Cavalry+counter.Marksmen;
+  counter.Marksmen += 100-sum;
+  return counter;
+}
+
+// Phase 25: Final rally refinement
+function finalizeKingshotCounter(enemy,isRally){
+  const base = isRally ? buildKingshotRally(enemy).leader : interpolateCounter(enemy);
+
+  // Normalize exactly to 100%
+  const total = base.Infantry + base.Cavalry + base.Marksmen;
+  if(total !== 100){
+    base.Marksmen += (100-total);
+  }
+
+  const finalCounter = releaseOptimize(refineCounter(enemy, validateCounter(base), isRally));
+const diagnostics = analyzeCounter(enemy, finalCounter);
+// diagnostics reserved for future debugging and tuning
+const tunedCounter = tuneCounterWeights(enemy, finalCounter);
+storeCounterCalculation(enemy, tunedCounter, isRally ? "rally" : "solo", target.value);
+return tunedCounter;
+}
+
+// Phase 24: Rally leader/filler specialization
+function buildKingshotRally(enemy){
+  const leader = interpolateCounter(enemy);
+  leader.Marksmen = 100 - leader.Infantry - leader.Cavalry;
+
+  const fillers = {
+    Infantry: Math.max(10, Math.round(leader.Infantry*0.75)),
+    Cavalry: Math.max(10, Math.round(leader.Cavalry*0.75)),
+    Marksmen: 0
+  };
+  fillers.Marksmen = 100 - fillers.Infantry - fillers.Cavalry;
+
+  return {leader, fillers};
+}
+
+// Phase 23: Continuous interpolation engine
+function interpolateCounter(enemy){
+  const i=enemy.Infantry,c=enemy.Cavalry,m=enemy.Marksmen;
+
+  let inf = m*1.45 + c*0.15;
+  let cav = i*1.45 + m*0.15;
+  let mar = c*1.45 + i*0.15;
+
+  const sum=inf+cav+mar;
+  return {
+    Infantry:Math.round(inf/sum*100),
+    Cavalry:Math.round(cav/sum*100),
+    Marksmen:0
+  };
+}
+
+// Phase 22: Adaptive Kingshot profiles
+function applyAdaptiveKingshotProfile(i,c,m,isRally){
+  const profiles=[
+    {min:[50,30,20], out:{Infantry:15,Cavalry:60,Marksmen:25}},
+    {min:[30,50,20], out:{Infantry:25,Cavalry:15,Marksmen:60}},
+    {min:[20,30,50], out:{Infantry:60,Cavalry:25,Marksmen:15}}
+  ];
+  for(const p of profiles){
+    if(i>=p.min[0] && c>=p.min[1] && m>=p.min[2]){
+      const r={...p.out};
+      if(isRally){
+        const k=Object.keys(r).reduce((a,b)=>r[a]>r[b]?a:b);
+        r[k]+=5;
+        r.Marksmen+=100-(r.Infantry+r.Cavalry+r.Marksmen);
+      }
+      return r;
+    }
+  }
+  return null;
+}
+
+// Phase 21: Expanded Kingshot presets
+function applyKingshotPreset(i,c,m,targetType,isRally){
+  const presets=[
+    {cond:i>=45&&c>=35,r:{Infantry:15,Cavalry:55,Marksmen:30}},
+    {cond:c>=45&&m>=35,r:{Infantry:30,Cavalry:15,Marksmen:55}},
+    {cond:m>=45&&i>=35,r:{Infantry:55,Cavalry:30,Marksmen:15}},
+    {cond:i>=40&&c>=40,r:{Infantry:15,Cavalry:60,Marksmen:25}},
+    {cond:c>=40&&m>=40,r:{Infantry:25,Cavalry:15,Marksmen:60}},
+    {cond:m>=40&&i>=40,r:{Infantry:60,Cavalry:25,Marksmen:15}}
+  ];
+  for(const p of presets){
+    if(p.cond){
+      if(isRally){
+        const x={...p.r};
+        const max=Math.max(x.Infantry,x.Cavalry,x.Marksmen);
+        if(x.Infantry===max)x.Infantry+=5;
+        else if(x.Cavalry===max)x.Cavalry+=5;
+        else x.Marksmen+=5;
+        const fix=100-(x.Infantry+x.Cavalry+x.Marksmen);
+        x.Marksmen+=fix;
+        return x;
+      }
+      return p.r;
+    }
+  }
+  return null;
+}
+
+// Phase 20: Kingshot rule matrix
+function applyKingshotRules(enemy,targetType,isRally){
+  const {Infantry:i,Cavalry:c,Marksmen:m}=enemy;
+  if(i>=55) return {Infantry:15,Cavalry:isRally?70:65,Marksmen:isRally?15:20};
+  if(c>=55) return {Infantry:isRally?15:20,Cavalry:15,Marksmen:isRally?70:65};
+  if(m>=55) return {Infantry:isRally?70:65,Cavalry:isRally?15:20,Marksmen:15};
+  if(targetType==="fortress"){
+    return {Infantry:34,Cavalry:33,Marksmen:33};
+  }
+  return null;
+}
+
+// Phase 19: Kingshot-specific counter profiles
+function selectCounterProfile(i,c,m,targetType){
+  const spread=Math.max(i,c,m)-Math.min(i,c,m);
+
+  if(targetType==="fortress"){
+    if(spread>=30){
+      return {leaderBias:1.15,fillerBias:0.90};
+    }
+    return {leaderBias:1.08,fillerBias:0.96};
+  }
+
+  if(spread>=30){
+    return {leaderBias:1.10,fillerBias:1.00};
+  }
+  return {leaderBias:1.03,fillerBias:1.00};
+}
+
+// Phase 18: Kingshot rally role optimization
+function optimizeRallyRoles(counter){
+  const profile=selectCounterProfile(enemyInf.valueAsNumber||0,enemyCav.valueAsNumber||0,enemyMar.valueAsNumber||0,target.value);
+  const leader = {
+    Infantry:Math.round(counter.Infantry*profile.leaderBias),
+    Cavalry:Math.round(counter.Cavalry*profile.leaderBias),
+    Marksmen:counter.Marksmen
+  };
+  const lfix=100-(leader.Infantry+leader.Cavalry+leader.Marksmen);
+  leader.Marksmen+=lfix;
+
+  const fillers = {
+    Infantry: Math.round(counter.Infantry * 0.70),
+    Cavalry: Math.round(counter.Cavalry * 0.70),
+    Marksmen: 0
+  };
+  fillers.Marksmen = 100 - fillers.Infantry - fillers.Cavalry;
+
+  // Ensure no negative values
+  for (const k of ["Infantry","Cavalry","Marksmen"]) {
+    if (fillers[k] < 0) fillers[k] = 0;
+  }
+  const fix = 100 - (fillers.Infantry + fillers.Cavalry + fillers.Marksmen);
+  fillers.Marksmen += fix;
+
+  return { leader, fillers };
+}
+
+// Phase 17: Kingshot Rally Engine foundation
+function buildRallyRoles(counter){
+  const leader = {...counter};
+  const fillers = {
+    Infantry: Math.round(counter.Infantry*0.75),
+    Cavalry: Math.round(counter.Cavalry*0.75),
+    Marksmen: 0
+  };
+  fillers.Marksmen = 100 - fillers.Infantry - fillers.Cavalry;
+
+  return {leader, fillers};
+}
+
+// Phase 16: Separate Solo/Rally engines
+function buildFinalCounter(i,c,m,isRally){
+  const base=applyScoreEngine(i,c,m);
+
+  if(isRally){
+    let vals=[
+      {k:"Infantry",v:base.Infantry},
+      {k:"Cavalry",v:base.Cavalry},
+      {k:"Marksmen",v:base.Marksmen}
+    ].sort((a,b)=>b.v-a.v);
+
+    vals[0].v+=5;
+    vals[2].v=Math.max(0,vals[2].v-5);
+
+    const out={Infantry:0,Cavalry:0,Marksmen:0};
+    vals.forEach(x=>out[x.k]=x.v);
+    const fix=100-(out.Infantry+out.Cavalry+out.Marksmen);
+    out.Marksmen+=fix;
+    return out;
+  }
+  return base;
+}
+
+// Phase 15: score-based rule engine
+function applyScoreEngine(i,c,m){
+  const score={
+    Infantry: m*2 + c*0.4,
+    Cavalry: i*2 + m*0.4,
+    Marksmen: c*2 + i*0.4
+  };
+
+  const total=score.Infantry+score.Cavalry+score.Marksmen;
+  let inf=Math.round(score.Infantry/total*100);
+  let cav=Math.round(score.Cavalry/total*100);
+  let mar=100-inf-cav;
+
+  // Blend with rule engine for smoother transitions
+  const rule=applyAdvancedRuleBias(i,c,m);
+
+  return {
+    Infantry:Math.round((inf+rule.Infantry)/2),
+    Cavalry:Math.round((cav+rule.Cavalry)/2),
+    Marksmen:0
+  };
+}
+
+// Phase 14: advanced rule engine
+function applyAdvancedRuleBias(i,c,m){
+  // Balanced enemy
+  if(Math.abs(i-c)<=5 && Math.abs(c-m)<=5){
+    return {Infantry:34,Cavalry:33,Marksmen:33};
+  }
+
+  // Two troop types dominate
+  if(i>=40 && c>=30){
+    return {Infantry:15,Cavalry:55,Marksmen:30};
+  }
+  if(c>=40 && m>=30){
+    return {Infantry:30,Cavalry:15,Marksmen:55};
+  }
+  if(m>=40 && i>=30){
+    return {Infantry:55,Cavalry:30,Marksmen:15};
+  }
+
+  // Single dominant troop
+  if(i>=c && i>=m) return {Infantry:15,Cavalry:65,Marksmen:20};
+  if(c>=i && c>=m) return {Infantry:20,Cavalry:15,Marksmen:65};
+  return {Infantry:65,Cavalry:20,Marksmen:15};
+}
+
+// Phase 13 helper
+function applyRuleBias(i,c,m,rec){
+  if(i>=c && i>=m) return {Infantry:15,Cavalry:65,Marksmen:20};
+  if(c>=i && c>=m) return {Infantry:20,Cavalry:15,Marksmen:65};
+  return {Infantry:65,Cavalry:20,Marksmen:15};
+}
+
+
+
+const UI={
+ en:{
+  infantry:"Enemy Infantry %",
+  cavalry:"Enemy Cavalry %",
+  marksmen:"Enemy Marksmen %",
+  target:"Target",
+  mode:"Mode",
+  march:"March Size",
+  calculate:"Calculate"
+ },
+ de:{
+  infantry:"Gegner Infanterie %",
+  cavalry:"Gegner Kavallerie %",
+  marksmen:"Gegner Schützen %",
+  target:"Ziel",
+  mode:"Modus",
+  march:"Marschgröße",
+  calculate:"Berechnen"
+ },
+ es:{
+  infantry:"Infantería enemiga %",
+  cavalry:"Caballería enemiga %",
+  marksmen:"Tiradores enemigos %",
+  target:"Objetivo",
+  mode:"Modo",
+  march:"Tamaño de marcha",
+  calculate:"Calcular"
+ }
+};
+
+function applyLanguage(){
+ const t=UI[language.value]||UI.en;
+ const labels=document.querySelectorAll("label");
+ labels[1].textContent=t.infantry;
+ labels[2].textContent=t.cavalry;
+ labels[3].textContent=t.marksmen;
+ labels[4].textContent=t.target;
+ labels[5].textContent=t.mode;
+ labels[6].textContent=t.march;
+ document.querySelector("button").textContent=t.calculate;
+}
+language.onchange=()=>{applyLanguage();calculate();};
+window.addEventListener("load",applyLanguage);
+
+
+function tr(key){
+  const dict={
+    en:{solo:"Solo Mode",rally:"Rally Mode",leader:"Rally Leader",fill:"Fillers",counter:"Optimal Counter Distribution"},
+    de:{solo:"Solo-Modus",rally:"Rally-Modus",leader:"Rally-Anführer",fill:"Mitspieler",counter:"Optimale Konterverteilung"},
+    es:{solo:"Modo Solo",rally:"Modo Rally",leader:"Líder de Rally",fill:"Participantes",counter:"Distribución óptima de contraataque"}
+  };
+  return (dict[language.value]||dict.en)[key];
+}
+
+const LANG={
+  en:{counter:"Optimal Counter Distribution",leader:"Rally Leader Counter"},
+  de:{counter:"Optimale Konterverteilung",leader:"Rally-Anführer"},
+  es:{counter:"Distribución óptima de contraataque",leader:"Líder de Rally"}
+};
+
+
+
+target.onchange=()=>{
+  mode.value=(target.value==="fortress")?"rally":"solo";
+  calculate();
+};
+
+function validateInput(i,c,m){
+  return (i+c+m)===100;
+}
+
+
+
+function buildCounterRecommendation(i,c,m){
+  const fortress = (target.value==="fortress");
+  const rallyMode = (mode.value==="rally");
+
+  // Dynamic counter weights (Phase 3)
+  let inf = m*(fortress?1.55:1.40) + c*0.20 + i*0.02;
+  let cav = i*(fortress?1.55:1.40) + m*0.20 + c*0.02;
+  let mar = c*(fortress?1.55:1.40) + i*0.20 + m*0.02;
+
+  
+  // Adaptive emphasis for dominant enemy troop
+  if(i>=c && i>=m){
+    cav*=1.18;
+  }else if(c>=i && c>=m){
+    mar*=1.18;
+  }else{
+    inf*=1.18;
+  }
+
+  const total = inf+cav+mar;
+
+  let ri=Math.round(inf/total*100);
+  let rc=Math.round(cav/total*100);
+  let rm=100-ri-rc;
+
+  return {
+    Infantry:ri,
+    Cavalry:rc,
+    Marksmen:rm,
+    RallyLeader:{Infantry:ri,Cavalry:rc,Marksmen:rm},
+    RallyFill:(()=>{
+  let fi,fc,fm;
+  // Adaptive rally distribution
+  if(mode.value==="rally"){
+    fi=Math.round(ri*0.85+5);
+    fc=Math.round(rc*0.85+5);
+    fm=100-fi-fc;
+  }else{
+    fi=ri; fc=rc; fm=rm;
+  }
+  // keep totals exactly at 100
+const fix = 100-(fi+fc+fm);
+fm += fix;
+return {Infantry:fi,Cavalry:fc,Marksmen:fm};
+})()
+  };
+}
+
+function renderResult(msg){
+  result.innerHTML=msg;
+}
+
+function calculate(){
+  const i=Number(enemyInf.value);
+  const c=Number(enemyCav.value);
+  const m=Number(enemyMar.value);
+
+  if(!validateInput(i,c,m)){
+    const err={en:"Enemy troop total must equal 100%.",de:"Die Summe muss genau 100 % ergeben.",es:"La suma debe ser exactamente 100%."};
+renderResult(`<b style="color:#ff9090">${err[language?.value||"en"]}</b>`);
+    return;
+  }
+
+  let rec=buildCounterRecommendation(i,c,m);
+  {
+  const interp=interpolateCounter({Infantry:i,Cavalry:c,Marksmen:m});
+const override = applyAdaptiveKingshotProfile(i,c,m,mode.value==="rally") || applyKingshotPreset(i,c,m,target.value,mode.value==="rally") || applyKingshotRules({Infantry:i,Cavalry:c,Marksmen:m},target.value,mode.value==="rally");
+if(!override){
+  interp.Marksmen=100-interp.Infantry-interp.Cavalry;
+  override=interp;
+}
+  const finalRec = override || finalizeKingshotCounter(
+      {Infantry:i,Cavalry:c,Marksmen:m},
+      mode.value==="rally"
+    );
+  finalRec.Marksmen=100-finalRec.Infantry-finalRec.Cavalry;
+  rec=Object.assign(rec,finalRec);
+  if(mode.value==="rally"){
+    const ks=buildKingshotRally({Infantry:i,Cavalry:c,Marksmen:m});
+    rec.Roles={
+      leader:ks.leader,
+      fillers:ks.fillers
+    };
+    rec.RallyFill=ks.fillers;
+    rec.RallyLeader=ks.leader;
+  }
+}
+  const rally=(mode.value==="rally");
+  const t=LANG[language.value]||LANG.en; let html="<b>"+tr("counter")+"</b><br><small>"+(rally?tr("rally"):tr("solo"))+"</small><br><br>";
+  if(rally){html+="<b>"+tr("leader")+"</b><br>";}
+  renderResult(html
+    + "Infantry: "+rec.Infantry+"%<br>"
++ "Cavalry: "+rec.Cavalry+"%<br>"
++ "Marksmen: "+rec.Marksmen+"%"
++ (rally?
+"<br><br><b>"+(typeof tr==="function"?tr("fill"):"Fillers")+"</b><br>"
++"Infantry: "+((rec.Roles&&rec.Roles.fillers)?rec.Roles.fillers.Infantry:rec.RallyFill.Infantry)+"%<br>"
++"Cavalry: "+((rec.Roles&&rec.Roles.fillers)?rec.Roles.fillers.Cavalry:rec.RallyFill.Cavalry)+"%<br>"
++"Marksmen: "+((rec.Roles&&rec.Roles.fillers)?rec.Roles.fillers.Marksmen:rec.RallyFill.Marksmen)+"%"
+:""));
+}
+
+target.onchange();
+if(typeof applyLanguage==='function'){applyLanguage();}
+
+</script>
+</body>
+</html>
