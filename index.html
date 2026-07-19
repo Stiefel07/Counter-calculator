@@ -189,7 +189,27 @@ let l=lang.value,t=text[l];
 
 let stage="Balanced Counter";
 let filler=33;
+let leaderPercent = 45;
+let fillerPercent = filler;
 
+switch(target.value){
+
+case "castle":
+    leaderPercent = 45;
+    fillerPercent = filler;
+    break;
+
+case "outpost":
+    leaderPercent = 55;
+    fillerPercent = Math.max(filler,45);
+    break;
+
+case "shrine":
+    leaderPercent = 60;
+    fillerPercent = Math.max(filler,50);
+    break;
+
+}
 if(highest>=56){stage="Heavy";filler=45;}
 else if(highest>=45){stage="Medium";filler=42;}
 else if(highest>=37){stage="Light";filler=38;}
@@ -212,8 +232,8 @@ return `${d.Infantry}% ${names[l].Infantry}<br>${d.Cavalry}% ${names[l].Cavalry}
 }
 
 if(mode.value==="rally"){
-let leader=dist(main,45);
-let fillers=dist(main,filler);
+let let leader=dist(main,leaderPercent);
+let fillers=dist(main,fillerPercent);
 out.innerHTML=
 `<b>Enemy Focus:</b> ${names[l][enemy]} (${highest}%)<br>
 <b>Counter Level:</b> ${stage}<br><br>
