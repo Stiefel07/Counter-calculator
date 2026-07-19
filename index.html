@@ -181,7 +181,7 @@ return `${d.Infantry}% ${names[l].Infantry}<br>${d.Cavalry}% ${names[l].Cavalry}
 }
 
 if(mode.value==="rally"){
-let leader=dist(main,70);
+let leader=dist(main45);
 let fillers=dist(main,filler);
 out.innerHTML=
 `<b>Enemy Focus:</b> ${names[l][enemy]} (${highest}%)<br>
@@ -191,7 +191,7 @@ out.innerHTML=
 copyBtn.style.display="block";
 copyBtn.innerText=t.copy;
 }else{
-out.innerHTML="<b>"+t.lead+":</b><br>"+dist(main,70);
+out.innerHTML="<b>"+t.lead+":</b><br>"+dist(main,45);
 copyBtn.style.display="none";
 }
 }
