@@ -80,7 +80,13 @@ line-height:1.6;
 
 <label id="modeLabel">Mode</label>
 <select id="mode"></select>
+<label id="targetLabel">Target</label>
 
+<select id="target">
+    <option value="castle">🏰 Castle</option>
+    <option value="outpost">🏕️ Outpost</option>
+    <option value="shrine">🏛️ Shrine / Fortress</option>
+</select>
 <button id="calcBtn" onclick="calc()"></button>
 
 <div id="out" class="result"></div><button id="copyBtn" onclick="copyResult()" style="display:none"></button>
@@ -93,7 +99,12 @@ const text={
 de:{
 title:"⚔️ Kingshot Konterrechner",lang:"Sprache",
 inf:"Infanterie (%)",cav:"Kavallerie (%)",arc:"Schützen (%)",
-mode:"Modus",calc:"Konter berechnen",
+mode:"Modus",
+target:"Ziel",
+castle:"🏰 Burg",
+outpost:"🏕️ Außenposten",
+shrine:"🏛️ Heiligtum / Festung",
+calc:"Konter berechnen",
 rally:"🏰 Rallyeführer",solo:"⚔️ Solo (Schloss)",
 lead:"Empfohlene Haupttruppe",dist:"Leader",fill:"Füller",counter:"Kontert",copy:"In Chat kopieren",copied:"Kopiert!"
 },
