@@ -181,7 +181,7 @@ return `${d.Infantry}% ${names[l].Infantry}<br>${d.Cavalry}% ${names[l].Cavalry}
 }
 
 if(mode.value==="rally"){
-let leader=dist(main45);
+let leader=dist(main,45);
 let fillers=dist(main,filler);
 out.innerHTML=
 `<b>Enemy Focus:</b> ${names[l][enemy]} (${highest}%)<br>
