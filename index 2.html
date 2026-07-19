@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Kingshot Konterrechner</title>
+<style>
+body{
+margin:0;
+font-family:Arial,sans-serif;
+background:linear-gradient(135deg,#182848,#4b6cb7);
+color:white;
+}
+.container{
+max-width:720px;
+margin:25px auto;
+padding:20px;
+}
+.card{
+background:rgba(255,255,255,.12);
+backdrop-filter:blur(8px);
+padding:20px;
+border-radius:18px;
+box-shadow:0 10px 30px rgba(0,0,0,.35);
+}
+h1{text-align:center;color:#ffd54f}
+label{display:block;margin-top:12px;font-weight:bold}
+input,select{
+width:100%;
+padding:12px;
+margin-top:5px;
+border:none;
+border-radius:10px;
+font-size:16px;
+}
+button{
+margin-top:20px;
+width:100%;
+padding:14px;
+font-size:18px;
+font-weight:bold;
+background:#ff9800;
+color:white;
+border:none;
+border-radius:12px;
+cursor:pointer;
+}
+button:hover{background:#fb8c00}
+.result{
+margin-top:20px;
+padding:18px;
+background:#1e293b;
+border-left:6px solid #4caf50;
+border-radius:10px;
+line-height:1.7;
+}
+small{color:#ddd}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="card">
+<h1>⚔️ Kingshot Konterrechner</h1>
+
+<label>Infanterie (%)</label>
+<input id="inf" type="number" value="33">
+
+<label>Kavallerie (%)</label>
+<input id="cav" type="number" value="33">
+
+<label>Schützen (%)</label>
+<input id="arc" type="number" value="34">
+
+<label>Modus</label>
+<select id="mode">
+<option value="rally">🏰 Rallyeführer</option>
+<option value="solo">⚔️ Solo (Schlösser)</option>
+</select>
+
+<button onclick="calc()">Konter berechnen</button>
+
+<div class="result" id="out">
+<small>Gib die gegnerische Truppenverteilung ein und tippe auf „Konter berechnen“.</small>
+</div>
+
+</div>
+</div>
+
+<script>
+function calc(){
+let i=+inf.value,c=+cav.value,a=+arc.value;
+let arr=[
+{name:"Infanterie",v:i},
+{name:"Kavallerie",v:c},
+{name:"Schützen",v:a}
+].sort((x,y)=>y.v-x.v);
+
+const counter={
+"Infanterie":"Schützen",
+"Schützen":"Kavallerie",
+"Kavallerie":"Infanterie"
+};
+
+let main=counter[arr[0].name];
+let txt="<h3>Empfehlung</h3>";
+
+if(mode.value==="rally"){
+txt+="<b>🏰 Rallyeführer</b><br>";
+txt+="Haupttruppe: <b>"+main+"</b><br><br>";
+txt+="Empfohlene Verteilung:<br>";
+txt+="60% "+main+"<br>20% Rest<br>20% Rest";
+}else{
+txt+="<b>⚔️ Solo gegen Schlösser</b><br>";
+txt+="Haupttruppe: <b>"+main+"</b><br><br>";
+txt+="Empfohlene Verteilung:<br>";
+txt+="70% "+main+"<br>15% Rest<br>15% Rest";
+}
+out.innerHTML=txt;
+}
+</script>
+</body>
+</html>
