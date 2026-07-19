@@ -156,13 +156,13 @@ es:{Infantry:"Infantería",Cavalry:"Caballería",Marksmen:"Tiradores"}
 
 let l=lang.value,t=text[l];
 
-let stage="No Counter";
+let stage="Balanced Counter";
 let filler=33;
 
 if(highest>=56){stage="Heavy";filler=45;}
 else if(highest>=45){stage="Medium";filler=42;}
 else if(highest>=37){stage="Light";filler=38;}
-else{stage="No Counter";filler=40;}
+else{stage="Balanced Counter";filler=42;}
 
 let main=counter[enemy];
 
