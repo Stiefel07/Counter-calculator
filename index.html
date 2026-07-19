@@ -137,11 +137,25 @@ lead:"Tropa principal recomendada",dist:"Líder",fill:"Participantes",counter:"C
 function setLang(){
 let l=lang.value,t=text[l];
 title.innerText=t.title;
-langLabel.innerText=t.lang;
+langLabel.innerText=pt.lang;
 infLabel.innerText=t.inf;
 cavLabel.innerText=t.cav;
 arcLabel.innerText=t.arc;
 modeLabel.innerText=t.mode;
+targetLabel.innerText=t.target;
+
+calcBtn.innerText=t.calc;
+
+mode.innerHTML="";
+mode.add(new Option(t.rally,"rally"));
+mode.add(new Option(t.solo,"solo"));
+
+target.innerHTML="";
+target.add(new Option(t.castle,"castle"));
+target.add(new Option(t.outpost,"outpost"));
+target.add(new Option(t.shrine,"shrine"));
+
+out.innerHTML="";
 calcBtn.innerText=t.calc;
 mode.innerHTML="";
 mode.add(new Option(t.rally,"rally"));
