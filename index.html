@@ -192,6 +192,16 @@ let filler=33;
 let leaderPercent = 45;
 let fillerPercent = filler;
 
+
+
+
+if(highest>=56){stage="Heavy";filler=45;}
+else if(highest>=45){stage="Medium";filler=42;}
+else if(highest>=37){stage="Light";filler=38;}
+else{stage="Balanced Counter";filler=42;}
+leaderPercent = 45;
+fillerPercent = filler;
+
 switch(target.value){
 
 case "castle":
@@ -210,11 +220,6 @@ case "shrine":
     break;
 
 }
-if(highest>=56){stage="Heavy";filler=45;}
-else if(highest>=45){stage="Medium";filler=42;}
-else if(highest>=37){stage="Light";filler=38;}
-else{stage="Balanced Counter";filler=42;}
-
 let main=counter[enemy];
 
 function dist(main,p){
@@ -242,7 +247,7 @@ out.innerHTML=
 copyBtn.style.display="block";
 copyBtn.innerText=t.copy;
 }else{
-out.innerHTML="<b>"+t.lead+":</b><br>"+dist(main,45);
+out.innerHTML="<b>"+t.lead+":</b><br>"+dist(main,leaderPercent);
 copyBtn.style.display="none";
 }
 }
