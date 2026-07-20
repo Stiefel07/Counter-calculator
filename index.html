@@ -277,6 +277,8 @@ arcLabel.innerText=t.arc;
 modeLabel.innerText=t.mode;
 targetLabel.innerText=t.target;
 infoBox.innerText = t.info;
+helpBtn.innerText = "ⓘ " + t.helpButton;
+helpPopup.innerHTML = t.helpPopup;
 calcBtn.innerText=t.calc;
 
 mode.innerHTML="";
@@ -298,9 +300,19 @@ if(out.innerHTML.trim() !== ""){
 }
 
 }
-window.onload = function () {
-    setLang();
+helpBtn.onclick = function () {
+    helpPopup.style.display = "flex";
 };
+helpPopup.onclick = function (e) {
+    if (e.target === helpPopup) {
+helpPopup.style.display = "none";        
+    }
+};
+window.onload = function () {
+setLang();
+    
+};
+
 
 function calc(){
 let i=+inf.value,c=+cav.value,a=+arc.value;
