@@ -163,9 +163,8 @@ Kingshot<br>
 <button id="helpBtn" type="button">
     ⓘ How to find enemy percentages
 </button>
-<div id="helpPopup" style="display:none;">
+<div id="helpPopup">
     <div id="helpContent">
-         Test
     </div>
 </div>
 <label id="langLabel">Language</label>
@@ -244,7 +243,19 @@ stageLight:"Light",
 stageMedium:"Medium",
 stageHeavy:"Heavy",
 help:"How to find enemy troop percentages",
-helpPopup:"<h2>📊 Where can I find the enemy troop percentages?</h2><p>1. Open the battle report.<br><br>2. Scroll down to <b>Squad Total</b>.<br><br>3. Tap the small <b>ⓘ</b> icon.<br><br>4. A window will open showing the enemy troop percentages.<br><br>5. Enter the Infantry, Cavalry and Marksmen percentages into the Counter Tool.</p>",
+helpPopup:`
+<h2>📊 Where can I find the enemy troop percentages?</h2>
+
+<p>
+1. Open the battle report.<br><br>
+2. Scroll down to <b>Squad Total</b>.<br><br>
+3. Tap the small <b>ⓘ</b> icon.<br><br>
+4. A window will open showing the enemy troop percentages.<br><br>
+5. Enter the Infantry, Cavalry and Marksmen percentages into the Counter Tool.
+</p>
+
+<button id="closeHelpBtn">Close</button>
+`,
 },
 es:{
 title:"⚔️ Calculadora Kingshot",lang:"Idioma",
@@ -313,6 +324,11 @@ helpPopup.onclick = function (e) {
 helpPopup.style.display = "none";        
     }
 };
+document.addEventListener("click", function(e){
+    if(e.target && e.target.id === "closeHelpBtn"){
+        helpPopup.style.display = "none";
+    }
+});
 window.onload = function () {
 setLang();
     
