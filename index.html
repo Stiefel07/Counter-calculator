@@ -111,6 +111,46 @@ button:hover{background:#d97706}
     justify-content:center;
     align-items:center;
 }
+#helpContent{
+    background:#fff;
+    color:#222;
+    width:90%;
+    max-width:520px;
+    max-height:85vh;
+    overflow-y:auto;
+    border-radius:18px;
+    padding:24px;
+    text-align:left;
+    box-shadow:0 10px 40px rgba(0,0,0,.35);
+}
+
+#helpContent h2{
+    margin-top:0;
+    color:#2563eb;
+    text-align:center;
+}
+
+#helpContent p{
+    font-size:18px;
+    line-height:1.6;
+}
+
+#closeHelpBtn{
+    width:100%;
+    margin-top:20px;
+    padding:14px;
+    background:#2563eb;
+    color:#fff;
+    border:none;
+    border-radius:12px;
+    font-size:18px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+#closeHelpBtn:hover{
+    background:#1d4ed8;
+}
 </style>
 </head>
 <body>
@@ -125,6 +165,9 @@ Kingshot<br>
     ⓘ How to find enemy percentages
 </button>
 <div id="helpPopup" style="display:none;">
+    <div id="helpContent">
+        ...
+    </div>
 </div>
 <label id="langLabel">Language</label>
 <select id="lang" onchange="setLang()">
