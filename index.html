@@ -99,6 +99,18 @@ button:hover{background:#d97706}
 #helpBtn:hover{
     background:#1d4ed8;
 }
+    #helpPopup{
+    display:none;
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,.75);
+    z-index:9999;
+    justify-content:center;
+    align-items:center;
+}
 </style>
 </head>
 <body>
@@ -112,6 +124,8 @@ Kingshot<br>
 <button id="helpBtn" type="button">
     ⓘ How to find enemy percentages
 </button>
+<div id="helpPopup" style="display:none;">
+</div>
 <label id="langLabel">Language</label>
 <select id="lang" onchange="setLang()">
 <option value="en">English</option>
