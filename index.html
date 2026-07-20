@@ -161,7 +161,6 @@ if(copyBtn.style.display!=="none"){
 
 out.innerHTML="";
 
-out.innerHTML="";
 
 }
 setLang();
@@ -169,12 +168,12 @@ setLang();
 
 function calc(){
 let i=+inf.value,c=+cav.value,a=+arc.value;
-if(i+c+a!==100){
 
+if(i+c+a!==100){
+    out.innerHTML="<b>100% required.</b>";
+    return;
 }
-out.innerHTML="<b>100% required.</b>";
-return;
-}
+
 
 const vals={Infantry:i,Cavalry:c,Marksmen:a};
 const sorted=Object.entries(vals).sort((x,y)=>y[1]-x[1]);
