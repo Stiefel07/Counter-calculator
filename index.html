@@ -138,8 +138,10 @@ outpost:"🏕️ Puesto avanzado",
 shrine:"🏛️ Santuario / Fortaleza",
 calc:"Calcular Contraataque",
 rally:"🏰 Líder de Rally",solo:"⚔️ Solo (Castillo)",
-lead:"Tropa principal recomendada",dist:"Líder",fill:"Participantes",counter:"Contrarresta",copy:"Copiar al chat",copied:"¡
-  
+const enemy=sorted[0][0];
+const highest=sorted[0][1];
+lead:"Tropa principal recomendada",
+dist:"Líder",
 fill:"Participantes",
 counter:"Contrarresta",
 copy:"Copiar al chat",
@@ -147,56 +149,6 @@ copied:"¡Copiado!",
 focus:"Enfoque enemigo",
 level:"Nivel de contraataque",
 advantage:"Ventaja de contraataque",
-}
-
-
-};
-
-function setLang(){
-let l=lang.value,t=text[l];
-title.innerText=t.title;
-langLabel.innerText=t.lang;
-infLabel.innerText=t.inf;
-cavLabel.innerText=t.cav;
-arcLabel.innerText=t.arc;
-modeLabel.innerText=t.mode;
-targetLabel.innerText=t.target;
-
-calcBtn.innerText=t.calc;
-
-mode.innerHTML="";
-mode.add(new Option(t.rally,"rally"));
-mode.add(new Option(t.solo,"solo"));
-
-target.innerHTML="";
-target.add(new Option(t.castle,"castle"));
-target.add(new Option(t.outpost,"outpost"));
-target.add(new Option(t.shrine,"shrine"));
-
-if(copyBtn.style.display!=="none"){
-    copyBtn.innerText=t.copy;
-}
-
-
-
-}
-setLang();
-
-
-function calc(){
-let i=+inf.value,c=+cav.value,a=+arc.value;
-
-if(i+c+a!==100){
-    out.innerHTML="<b>100% required.</b>";
-    return;
-}
-
-
-const vals={Infantry:i,Cavalry:c,Marksmen:a};
-const sorted=Object.entries(vals).sort((x,y)=>y[1]-x[1]);
-const enemy=sorted[0][0];
-const highest=sorted[0][1];
-
 const counter={
 "Infantry":"Marksmen",
 "Marksmen":"Cavalry",
