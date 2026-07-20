@@ -289,10 +289,11 @@ copyBtn.style.display="none";
 
 
 function copyResult(){
-const text=out.innerText;
-navigator.clipboard.writeText(text);
-copyBtn.innerText=this.text[lang.value]?.copied||"Copied!";
+    const result = out.innerText;
+    navigator.clipboard.writeText(result);
+    copyBtn.innerText = text[lang.value].copied;
 }
+
 </script>
 
 <footer style="text-align:center;margin:20px 0;opacity:.6;font-size:12px;">© Stiefel™</footer>
