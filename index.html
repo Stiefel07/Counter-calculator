@@ -151,12 +151,12 @@ calcBtn.innerText=t.calc;
 mode.innerHTML="";
 mode.add(new Option(t.rally,"rally"));
 mode.add(new Option(t.solo,"solo"));
-mode.value = currentMode;
+mode.value = currentMode || "rally";
 target.innerHTML="";
 target.add(new Option(t.castle,"castle"));
 target.add(new Option(t.outpost,"outpost"));
 target.add(new Option(t.shrine,"shrine"));
-target.value = currentTarget;
+target.value = currentTarget || "castle";
 if(copyBtn.style.display!=="none"){
     copyBtn.innerText=t.copy;
 }
