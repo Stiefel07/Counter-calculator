@@ -251,9 +251,16 @@ return `${d.Infantry}% ${names[l].Infantry}<br>${d.Cavalry}% ${names[l].Cavalry}
 if(mode.value==="rally"){
 let leader=dist(main,leaderPercent);
 let fillers=dist(main,fillerPercent);
+let advantage="🟢 High";
+
+if(highest<60) advantage="🟡 Medium";
+if(highest<50) advantage="🔵 Small";
+if(highest<40) advantage="⚪ Minimal";
+
 out.innerHTML=
 `<b>Enemy Focus:</b> ${names[l][enemy]} (${highest}%)<br>
-<b>Counter Level:</b> ${stage}<br><br>
+<b>Counter Level:</b> ${stage}<br>
+<b>Counter Advantage:</b> ${advantage}<br><br>
 📤 <b>${t.dist}:</b><br>${leader}<br><br>
 👥 <b>${t.fill}:</b><br>${fillers}`;
 copyBtn.style.display="block";
