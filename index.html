@@ -63,12 +63,25 @@ cursor:pointer;
 }
 button:hover{background:#d97706}
 .result{
-margin-top:20px;
-background:#0f172a;
-padding:16px;
-border-left:5px solid #22c55e;
-border-radius:10px;
-line-height:1.6;
+    margin-top:20px;
+    background:#0f172a;
+    padding:16px;
+    border-left:5px solid #22c55e;
+    border-radius:10px;
+    line-height:1.6;
+}
+
+.infoBox{
+    margin:20px 0 24px;
+    padding:16px 18px;
+    background:rgba(255,255,255,.10);
+    border:1px solid rgba(255,255,255,.18);
+    border-radius:14px;
+    color:#fff;
+    font-size:20px;
+    line-height:1.4;
+    text-align:center;
+}
 }
 </style>
 </head>
@@ -79,7 +92,7 @@ line-height:1.6;
 Kingshot<br>
 <span class="subtitle">Counter Tool</span>
 </h1>
-
+<div id="infoBox" class="infoBox"></div>
 <label id="langLabel">Language</label>
 <select id="lang" onchange="setLang()">
 <option value="en">English</option>
@@ -119,6 +132,7 @@ title:"⚔️ Kingshot Konterrechner",lang:"Sprache",
 inf:"Infanterie (%)",cav:"Kavallerie (%)",arc:"Schützen (%)",
 mode:"Modus",
 target:"Ziel",
+info:"Gib zuerst die Truppenverteilung des Gegners in Prozent ein.",
 castle:"🏰 Burg",
 outpost:"🏕️ Außenposten",
 shrine:"🏛️ Heiligtum / Festung",
@@ -138,6 +152,7 @@ title:"⚔️ Kingshot Counter Tool",lang:"Language",
 inf:"Infantry (%)",cav:"Cavalry (%)",arc:"Marksmen (%)",
 mode:"Mode",
 target:"Target",
+info:"Enter the enemy troop percentages below.",
 castle:"🏰 Castle",
 outpost:"🏕️ Outpost",
 shrine:"🏛️ Shrine / Fortress",
@@ -157,6 +172,7 @@ title:"⚔️ Calculadora Kingshot",lang:"Idioma",
 inf:"Infantería (%)",cav:"Caballería (%)",arc:"Tiradores (%)",
 mode:"Modo",
 target:"Objetivo",
+info:"Introduce los porcentajes de tropas enemigas.",
 castle:"🏰 Castillo",
 outpost:"🏕️ Puesto avanzado",
 shrine:"🏛️ Santuario / Fortaleza",
