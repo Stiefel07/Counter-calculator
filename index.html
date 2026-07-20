@@ -106,10 +106,7 @@ outpost:"🏕️ Außenposten",
 shrine:"🏛️ Heiligtum / Festung",
 calc:"Konter berechnen",
 rally:"🏰 Rallyeführer",solo:"⚔️ Solo (Schloss)",
-lead:"Empfohlene Haupttruppe",dist:"Leader",fill:"Füller",counter:"Kontert",copy:"In Chat kopieren",copied:"Kopiert!",
-focus:"Gegnerfokus",
-level:"Konterstufe",
-advantage:"Kontervorteil",
+lead:"Empfohlene Haupttruppe",dist:"Leader",fill:"Füller",counter:"Kontert",copy:"In Chat kopieren",copied:"Kopiert!"
 },
 en:{
 title:"⚔️ Kingshot Counter Tool",lang:"Language",
@@ -121,13 +118,8 @@ outpost:"🏕️ Outpost",
 shrine:"🏛️ Shrine / Fortress",
 calc:"Calculate Counter",
 rally:"🏰 Rally Leader",solo:"⚔️ Solo (Castle)",
-copy:"Copy to Chat",copied:"Copied!",
-focus:"Enemy Focus",
-level:"Counter Level",
-advantage:"Counter Advantage",
-}
-
-,
+lead:"Recommended Main Troop",dist:"Leader",fill:"Fillers",counter:"Counters",copy:"Copy to Chat",copied:"Copied!"
+},
 es:{
 title:"⚔️ Calculadora Kingshot",lang:"Idioma",
 inf:"Infantería (%)",cav:"Caballería (%)",arc:"Tiradores (%)",
@@ -138,16 +130,57 @@ outpost:"🏕️ Puesto avanzado",
 shrine:"🏛️ Santuario / Fortaleza",
 calc:"Calcular Contraataque",
 rally:"🏰 Líder de Rally",solo:"⚔️ Solo (Castillo)",
-lead:"Tropa principal recomendada",
-dist:"Líder",
-fill:"Participantes",
-counter:"Contrarresta",
-copy:"Copiar al chat",
-copied:"¡Copiado!",
-focus:"Enfoque enemigo",
-level:"Nivel de contraataque",
-advantage:"Ventaja de contraataque"
+lead:"Tropa principal recomendada",dist:"Líder",fill:"Participantes",counter:"Contrarresta",copy:"Copiar al chat",copied:"¡Copiado!"
 }
+};
+
+function setLang(){
+let l=lang.value,t=text[l];
+title.innerText=t.title;
+langLabel.innerText=t.lang;
+infLabel.innerText=t.inf;
+cavLabel.innerText=t.cav;
+arcLabel.innerText=t.arc;
+modeLabel.innerText=t.mode;
+targetLabel.innerText=t.target;
+
+calcBtn.innerText=t.calc;
+
+mode.innerHTML="";
+mode.add(new Option(t.rally,"rally"));
+mode.add(new Option(t.solo,"solo"));
+
+target.innerHTML="";
+target.add(new Option(t.castle,"castle"));
+target.add(new Option(t.outpost,"outpost"));
+target.add(new Option(t.shrine,"shrine"));
+
+if(copyBtn.style.display!=="none"){
+    copyBtn.innerText=t.copy;
+}
+
+out.innerHTML="";
+
+}
+setLang();
+
+function calc(){
+let i=+inf.value,c=+cav.value,a=+arc.value;
+
+if(i+c+a!==100){
+    out.innerHTML="<b>100% required.</b>";
+    return;
+}
+
+const vals={Infantry:i,Cavalry:c,Marksmen:a};
+const sorted=Object.entries(vals).sort((x,y)=>y[1]-x[1]);
+const enemy=sorted[0][0];
+const highest=sorted[0][1];
+
+const counter={
+"Infantry":"Marksmen",
+"Marksmen":"Cavalry",
+"Cavalry":"Infantry"
 };
 
 const names={
@@ -162,9 +195,6 @@ let stage="Balanced Counter";
 let filler=33;
 let leaderPercent = 45;
 let fillerPercent = filler;
-
-
-
 
 if(highest>=60){
     stage="Heavy";
@@ -250,7 +280,6 @@ out.innerHTML="<b>"+t.lead+":</b><br>"+dist(main,leaderPercent);
 copyBtn.style.display="none";
 }
 }
-
 
 function copyResult(){
     const result = out.innerText;
