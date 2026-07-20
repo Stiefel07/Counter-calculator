@@ -237,7 +237,7 @@ let main=counter[enemy];
 function dist(main,p){
 let rest=100-p;
 let side=Math.floor(rest/2);
-let other=rest-side;
+
 let d={Infantry:side,Cavalry:side,Marksmen:side};
 d[main]=p;
 let keys=["Infantry","Cavalry","Marksmen"];
@@ -251,11 +251,20 @@ return `${d.Infantry}% ${names[l].Infantry}<br>${d.Cavalry}% ${names[l].Cavalry}
 if(mode.value==="rally"){
 let leader=dist(main,leaderPercent);
 let fillers=dist(main,fillerPercent);
-let advantage="🟢 High";
+let advantage;
 
-if(highest<60) advantage="🟡 Medium";
-if(highest<50) advantage="🔵 Small";
-if(highest<40) advantage="⚪ Minimal";
+if(highest>=60){
+    advantage="🟢 High";
+}
+else if(highest>=50){
+    advantage="🟡 Medium";
+}
+else if(highest>=40){
+    advantage="🔵 Small";
+}
+else{
+    advantage="⚪ Minimal";
+}
 
 out.innerHTML=
 `<b>Enemy Focus:</b> ${names[l][enemy]} (${highest}%)<br>
