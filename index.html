@@ -195,10 +195,22 @@ let fillerPercent = filler;
 
 
 
-if(highest>=56){stage="Heavy";filler=45;}
-else if(highest>=45){stage="Medium";filler=42;}
-else if(highest>=37){stage="Light";filler=38;}
-else{stage="Balanced Counter";filler=42;}
+if(highest>=60){
+    stage="Heavy";
+    filler=50;
+}
+else if(highest>=50){
+    stage="Medium";
+    filler=46;
+}
+else if(highest>=40){
+    stage="Light";
+    filler=44;
+}
+else{
+    stage="Balanced Counter";
+    filler=42;
+}
 leaderPercent = 45;
 fillerPercent = filler;
 
