@@ -155,6 +155,12 @@ target.add(new Option(t.castle,"castle"));
 target.add(new Option(t.outpost,"outpost"));
 target.add(new Option(t.shrine,"shrine"));
 
+if(copyBtn.style.display!=="none"){
+    copyBtn.innerText=t.copy;
+}
+
+out.innerHTML="";
+
 out.innerHTML="";
 
 }
@@ -164,8 +170,7 @@ setLang();
 function calc(){
 let i=+inf.value,c=+cav.value,a=+arc.value;
 if(i+c+a!==100){
-if(copyBtn.style.display!=="none"){
-    copyBtn.innerText=t.copy;
+
 }
 out.innerHTML="<b>100% required.</b>";
 return;
