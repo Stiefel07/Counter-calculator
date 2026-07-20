@@ -82,6 +82,7 @@ button:hover{background:#d97706}
     line-height:1.4;
     text-align:center;
 }
+}
 #helpBtn{
     width:100%;
     margin-bottom:20px;
@@ -163,8 +164,9 @@ Kingshot<br>
 <button id="helpBtn" type="button">
     ⓘ How to find enemy percentages
 </button>
-<div id="helpPopup">
+<div id="helpPopup" style="display:none;">
     <div id="helpContent">
+        ...
     </div>
 </div>
 <label id="langLabel">Language</label>
@@ -221,7 +223,7 @@ stageLight:"Leicht",
 stageMedium:"Mittel",
 stageHeavy:"Stark",
 help:"So findest du die gegnerischen Truppenprozente",
-helpPopup:"<h2>📊 Wo finde ich die gegnerischen Truppenwerte?</h2><p>1. Öffne den Kampfbericht.<br><br>2. Scrolle bis <b>„Schwadron insgesamt“</b>.<br><br>3. Tippe auf das kleine <b>ⓘ</b>-Symbol.<br><br>4. Es öffnet sich ein Fenster mit den Prozentwerten der gegnerischen Truppen.<br><br>5. Übertrage diese Werte für Infanterie, Kavallerie und Schützen in den Rechner.<br><br><div id="helpImage"></div></p>",
+helpPopup:"<h2>So findest du die gegnerischen Truppenprozente</h2><p>Öffne den Kampfbericht. Dort findest du die Zusammensetzung der gegnerischen Truppen. Übertrage anschließend die Prozentwerte für Infanterie, Kavallerie und Schützen in den Rechner.</p>",
 },
 en:{
 title:"⚔️ Kingshot Counter Tool",lang:"Language",
@@ -243,19 +245,7 @@ stageLight:"Light",
 stageMedium:"Medium",
 stageHeavy:"Heavy",
 help:"How to find enemy troop percentages",
-helpPopup:`
-<h2>📊 Where can I find the enemy troop percentages?</h2>
-
-<p>
-1. Open the battle report.<br><br>
-2. Scroll down to <b>Squad Total</b>.<br><br>
-3. Tap the small <b>ⓘ</b> icon.<br><br>
-4. A window will open showing the enemy troop percentages.<br><br>
-5. Enter the Infantry, Cavalry and Marksmen percentages into the Counter Tool.
-</p>
-
-<button id="closeHelpBtn">Close</button>
-`,
+helpPopup:"<h2>How to find enemy troop percentages</h2><p>Open the battle report, look at the enemy troop composition and enter the Infantry, Cavalry and Marksmen percentages here.</p>",
 },
 es:{
 title:"⚔️ Calculadora Kingshot",lang:"Idioma",
@@ -277,7 +267,7 @@ stageLight:"Ligero",
 stageMedium:"Medio",
 stageHeavy:"Fuerte",
 help:"Cómo encontrar los porcentajes enemigos",
-helpPopup:"<h2>📊 ¿Dónde puedo encontrar los porcentajes de tropas enemigas?</h2><p>1. Abre el informe de batalla.<br><br>2. Desplázate hasta <b>«Escuadrón total»</b>.<br><br>3. Pulsa el pequeño icono <b>ⓘ</b>.<br><br>4. Se abrirá una ventana con los porcentajes de las tropas enemigas.<br><br>5. Introduce los porcentajes de Infantería, Caballería y Tiradores en la Calculadora de Contraataque.</p>",
+helpPopup:"<h2>Cómo encontrar los porcentajes enemigos</h2><p>Abre el informe de batalla, mira la composición de tropas enemigas e introduce aquí los porcentajes de Infantería, Caballería y Tiradores.</p>",
 },
 };
 
@@ -294,7 +284,7 @@ modeLabel.innerText=t.mode;
 targetLabel.innerText=t.target;
 infoBox.innerText = t.info;
 helpBtn.innerText = "ⓘ " + t.help;
-helpContent.innerHTML = t.helpPopup;
+helpPopup.innerHTML = t.helpPopup;
 calcBtn.innerText=t.calc;
 
 mode.innerHTML="";
@@ -324,16 +314,10 @@ helpPopup.onclick = function (e) {
 helpPopup.style.display = "none";        
     }
 };
-document.addEventListener("click", function(e){
-    if(e.target && e.target.id === "closeHelpBtn"){
-        helpPopup.style.display = "none";
-    }
-});
 window.onload = function () {
 setLang();
     
 };
-
 
 function calc(){
 let i=+inf.value,c=+cav.value,a=+arc.value;
