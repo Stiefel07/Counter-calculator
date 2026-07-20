@@ -188,7 +188,9 @@ if(out.innerHTML.trim() !== ""){
 }
 
 }
-setLang();
+window.onload = function () {
+    setLang();
+};
 
 function calc(){
 let i=+inf.value,c=+cav.value,a=+arc.value;
