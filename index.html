@@ -293,12 +293,13 @@ else{
     advantage="⚪ Minimal";
 }
 
-out.innerHTML=
+out.innerHTML = `
 <b>${t.enemyFocus}:</b> ${names[l][enemy]} (${highest}%)<br>
 <b>${t.counterLevel}:</b> ${stage}<br>
 <b>${t.counterAdvantage}:</b> ${advantage}<br><br>
 📤 <b>${t.dist}:</b><br>${leader}<br><br>
-👥 <b>${t.fill}:</b><br>${fillers}`;
+👥 <b>${t.fill}:</b><br>${fillers}
+`;
 copyBtn.style.display="block";
 copyBtn.innerText=t.copy;
 }else{
