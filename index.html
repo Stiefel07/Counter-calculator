@@ -24,7 +24,22 @@ border-radius:18px;
 padding:22px;
 box-shadow:0 10px 30px rgba(0,0,0,.35);
 }
-h1{text-align:center;color:#ffd54f}
+h1{
+    text-align:center;
+    color:#ffd54f;
+    font-size:46px;
+    line-height:1.05;
+    margin-bottom:28px;
+    position:relative;
+    left:-10px;
+}
+
+.subtitle{
+display:block;
+font-size:28px;
+font-weight:700;
+margin-top:8px;
+}
 label{display:block;margin-top:12px;font-weight:bold}
 input,select{
 width:100%;
@@ -48,20 +63,111 @@ cursor:pointer;
 }
 button:hover{background:#d97706}
 .result{
-margin-top:20px;
-background:#0f172a;
-padding:16px;
-border-left:5px solid #22c55e;
-border-radius:10px;
-line-height:1.6;
+    margin-top:20px;
+    background:#0f172a;
+    padding:16px;
+    border-left:5px solid #22c55e;
+    border-radius:10px;
+    line-height:1.6;
+}
+
+.infoBox{
+    margin:20px 0 24px;
+    padding:16px 18px;
+    background:rgba(255,255,255,.10);
+    border:1px solid rgba(255,255,255,.18);
+    border-radius:14px;
+    color:#fff;
+    font-size:20px;
+    line-height:1.4;
+    text-align:center;
+}
+#helpBtn{
+    width:100%;
+    margin-bottom:20px;
+    padding:12px;
+    background:#2563eb;
+    color:#fff;
+    border:none;
+    border-radius:12px;
+    font-size:16px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+#helpBtn:hover{
+    background:#1d4ed8;
+}
+    #helpPopup{
+    display:none;
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,.75);
+    z-index:9999;
+    justify-content:center;
+    align-items:center;
+}
+#helpContent{
+    background:#fff;
+    color:#222;
+    width:90%;
+    max-width:520px;
+    max-height:85vh;
+    overflow-y:auto;
+    border-radius:18px;
+    padding:24px;
+    text-align:left;
+    box-shadow:0 10px 40px rgba(0,0,0,.35);
+}
+
+#helpContent h2{
+    margin-top:0;
+    color:#2563eb;
+    text-align:center;
+}
+
+#helpContent p{
+    font-size:18px;
+    line-height:1.6;
+}
+
+#closeHelpBtn{
+    width:100%;
+    margin-top:20px;
+    padding:14px;
+    background:#2563eb;
+    color:#fff;
+    border:none;
+    border-radius:12px;
+    font-size:18px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+#closeHelpBtn:hover{
+    background:#1d4ed8;
 }
 </style>
 </head>
 <body>
 <div class="container">
 <div class="card">
-<h1 id="title">⚔️ Kingshot Counter Tool</h1>
-
+<h1 id="title">
+Kingshot<br>
+<span class="subtitle">Counter Tool</span>
+</h1>
+<div id="infoBox" class="infoBox"></div>
+<button id="helpBtn" type="button">
+    ⓘ How to find enemy percentages
+</button>
+<div id="helpPopup" style="display:none;">
+    <div id="helpContent">
+         Test
+    </div>
+</div>
 <label id="langLabel">Language</label>
 <select id="lang" onchange="setLang()">
 <option value="en">English</option>
@@ -101,6 +207,7 @@ title:"⚔️ Kingshot Konterrechner",lang:"Sprache",
 inf:"Infanterie (%)",cav:"Kavallerie (%)",arc:"Schützen (%)",
 mode:"Modus",
 target:"Ziel",
+info:"Gib zuerst die Truppenverteilung des Gegners in Prozent ein.",
 castle:"🏰 Burg",
 outpost:"🏕️ Außenposten",
 shrine:"🏛️ Heiligtum / Festung",
@@ -114,12 +221,15 @@ stageBalanced:"Ausgeglichen",
 stageLight:"Leicht",
 stageMedium:"Mittel",
 stageHeavy:"Stark",
+help:"So findest du die gegnerischen Truppenprozente",
+helpPopup:"<h2>📊 Wo finde ich die gegnerischen Truppenwerte?</h2><p>1. Öffne den Kampfbericht.<br><br>2. Scrolle bis <b>„Schwadron insgesamt“</b>.<br><br>3. Tippe auf das kleine <b>ⓘ</b>-Symbol.<br><br>4. Es öffnet sich ein Fenster mit den Prozentwerten der gegnerischen Truppen.<br><br>5. Übertrage diese Werte für Infanterie, Kavallerie und Schützen in den Rechner.<br><br><div id="helpImage"></div></p>",
 },
 en:{
 title:"⚔️ Kingshot Counter Tool",lang:"Language",
 inf:"Infantry (%)",cav:"Cavalry (%)",arc:"Marksmen (%)",
 mode:"Mode",
 target:"Target",
+info:"Enter the enemy troop percentages below.",
 castle:"🏰 Castle",
 outpost:"🏕️ Outpost",
 shrine:"🏛️ Shrine / Fortress",
@@ -133,12 +243,15 @@ stageBalanced:"Balanced Counter",
 stageLight:"Light",
 stageMedium:"Medium",
 stageHeavy:"Heavy",
+help:"How to find enemy troop percentages",
+helpPopup:"<h2>📊 Where can I find the enemy troop percentages?</h2><p>1. Open the battle report.<br><br>2. Scroll down to <b>Squad Total</b>.<br><br>3. Tap the small <b>ⓘ</b> icon.<br><br>4. A window will open showing the enemy troop percentages.<br><br>5. Enter the Infantry, Cavalry and Marksmen percentages into the Counter Tool.</p>",
 },
 es:{
 title:"⚔️ Calculadora Kingshot",lang:"Idioma",
 inf:"Infantería (%)",cav:"Caballería (%)",arc:"Tiradores (%)",
 mode:"Modo",
 target:"Objetivo",
+info:"Introduce los porcentajes de tropas enemigas.",
 castle:"🏰 Castillo",
 outpost:"🏕️ Puesto avanzado",
 shrine:"🏛️ Santuario / Fortaleza",
@@ -152,6 +265,8 @@ stageBalanced:"Equilibrado",
 stageLight:"Ligero",
 stageMedium:"Medio",
 stageHeavy:"Fuerte",
+help:"Cómo encontrar los porcentajes enemigos",
+helpPopup:"<h2>📊 ¿Dónde puedo encontrar los porcentajes de tropas enemigas?</h2><p>1. Abre el informe de batalla.<br><br>2. Desplázate hasta <b>«Escuadrón total»</b>.<br><br>3. Pulsa el pequeño icono <b>ⓘ</b>.<br><br>4. Se abrirá una ventana con los porcentajes de las tropas enemigas.<br><br>5. Introduce los porcentajes de Infantería, Caballería y Tiradores en la Calculadora de Contraataque.</p>",
 },
 };
 
@@ -166,7 +281,9 @@ cavLabel.innerText=t.cav;
 arcLabel.innerText=t.arc;
 modeLabel.innerText=t.mode;
 targetLabel.innerText=t.target;
-
+infoBox.innerText = t.info;
+helpBtn.innerText = "ⓘ " + t.help;
+helpContent.innerHTML = t.helpPopup;
 calcBtn.innerText=t.calc;
 
 mode.innerHTML="";
@@ -188,7 +305,18 @@ if(out.innerHTML.trim() !== ""){
 }
 
 }
+helpBtn.onclick = function () {
+    helpPopup.style.display = "flex";
+};
+helpPopup.onclick = function (e) {
+    if (e.target === helpPopup) {
+helpPopup.style.display = "none";        
+    }
+};
+window.onload = function () {
 setLang();
+    
+};
 
 function calc(){
 let i=+inf.value,c=+cav.value,a=+arc.value;
@@ -293,12 +421,13 @@ else{
     advantage="⚪ Minimal";
 }
 
-out.innerHTML=
+out.innerHTML = `
 <b>${t.enemyFocus}:</b> ${names[l][enemy]} (${highest}%)<br>
 <b>${t.counterLevel}:</b> ${stage}<br>
 <b>${t.counterAdvantage}:</b> ${advantage}<br><br>
 📤 <b>${t.dist}:</b><br>${leader}<br><br>
-👥 <b>${t.fill}:</b><br>${fillers}`;
+👥 <b>${t.fill}:</b><br>${fillers}
+`;
 copyBtn.style.display="block";
 copyBtn.innerText=t.copy;
 }else{
@@ -317,7 +446,7 @@ function copyResult(){
 
 <footer style="
 text-align:center;
-margin:35px 0 20px;
+margin:20px 0 10px;
 font-size:17px;
 font-weight:700;
 letter-spacing:1.5px;
@@ -327,6 +456,14 @@ background:linear-gradient(90deg,#FFD54F,#FFFFFF,#FFD54F);
 text-shadow:0 0 12px rgba(255,213,79,.35);">
 ⚔️ Powered by Stiefel™ ⚔️
 </footer>
-
+<div style="
+text-align:center;
+font-size:12px;
+color:#d1d5db;
+margin-bottom:20px;
+line-height:1.5;">
+Unofficial fan-made tool for Kingshot.<br>
+Kingshot is a trademark of its respective owner.
+</div>
 </body>
 </html>
