@@ -164,6 +164,9 @@ setLang();
 function calc(){
 let i=+inf.value,c=+cav.value,a=+arc.value;
 if(i+c+a!==100){
+if(copyBtn.style.display!=="none"){
+    copyBtn.innerText=t.copy;
+}
 out.innerHTML="<b>100% required.</b>";
 return;
 }
