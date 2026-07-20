@@ -106,7 +106,10 @@ outpost:"🏕️ Außenposten",
 shrine:"🏛️ Heiligtum / Festung",
 calc:"Konter berechnen",
 rally:"🏰 Rallyeführer",solo:"⚔️ Solo (Schloss)",
-lead:"Empfohlene Haupttruppe",dist:"Leader",fill:"Füller",counter:"Kontert",copy:"In Chat kopieren",copied:"Kopiert!"
+lead:"Empfohlene Haupttruppe",dist:"Leader",fill:"Füller",counter:"Kontert",copy:"In Chat kopieren",copied:"Kopiert!",
+focus:"Gegnerfokus",
+level:"Konterstufe",
+advantage:"Kontervorteil",
 },
 en:{
 title:"⚔️ Kingshot Counter Tool",lang:"Language",
@@ -118,8 +121,13 @@ outpost:"🏕️ Outpost",
 shrine:"🏛️ Shrine / Fortress",
 calc:"Calculate Counter",
 rally:"🏰 Rally Leader",solo:"⚔️ Solo (Castle)",
-lead:"Recommended Main Troop",dist:"Leader",fill:"Fillers",counter:"Counters",copy:"Copy to Chat",copied:"Copied!"
-},
+copy:"Copy to Chat",copied:"Copied!",
+focus:"Enemy Focus",
+level:"Counter Level",
+advantage:"Counter Advantage",
+}
+
+,
 es:{
 title:"⚔️ Calculadora Kingshot",lang:"Idioma",
 inf:"Infantería (%)",cav:"Caballería (%)",arc:"Tiradores (%)",
@@ -130,8 +138,18 @@ outpost:"🏕️ Puesto avanzado",
 shrine:"🏛️ Santuario / Fortaleza",
 calc:"Calcular Contraataque",
 rally:"🏰 Líder de Rally",solo:"⚔️ Solo (Castillo)",
-lead:"Tropa principal recomendada",dist:"Líder",fill:"Participantes",counter:"Contrarresta",copy:"Copiar al chat",copied:"¡Copiado!"
+lead:"Tropa principal recomendada",dist:"Líder",fill:"Participantes",counter:"Contrarresta",copy:"Copiar al chat",copied:"¡
+  
+fill:"Participantes",
+counter:"Contrarresta",
+copy:"Copiar al chat",
+copied:"¡Copiado!",
+focus:"Enfoque enemigo",
+level:"Nivel de contraataque",
+advantage:"Ventaja de contraataque",
 }
+
+
 };
 
 function setLang(){
@@ -159,7 +177,6 @@ if(copyBtn.style.display!=="none"){
     copyBtn.innerText=t.copy;
 }
 
-out.innerHTML="";
 
 
 }
