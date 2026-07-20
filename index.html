@@ -107,6 +107,9 @@ shrine:"🏛️ Heiligtum / Festung",
 calc:"Konter berechnen",
 rally:"🏰 Rallyeführer",solo:"⚔️ Solo (Schloss)",
 lead:"Empfohlene Haupttruppe",dist:"Leader",fill:"Füller",counter:"Kontert",copy:"In Chat kopieren",copied:"Kopiert!"
+enemyFocus:"Gegnerfokus",
+counterLevel:"Konterstufe",
+counterAdvantage:"Kontervorteil",
 },
 en:{
 title:"⚔️ Kingshot Counter Tool",lang:"Language",
@@ -119,6 +122,9 @@ shrine:"🏛️ Shrine / Fortress",
 calc:"Calculate Counter",
 rally:"🏰 Rally Leader",solo:"⚔️ Solo (Castle)",
 lead:"Recommended Main Troop",dist:"Leader",fill:"Fillers",counter:"Counters",copy:"Copy to Chat",copied:"Copied!"
+enemyFocus:"Enemy Focus",
+counterLevel:"Counter Level",
+counterAdvantage:"Counter Advantage",
 },
 es:{
 title:"⚔️ Calculadora Kingshot",lang:"Idioma",
@@ -131,6 +137,9 @@ shrine:"🏛️ Santuario / Fortaleza",
 calc:"Calcular Contraataque",
 rally:"🏰 Líder de Rally",solo:"⚔️ Solo (Castillo)",
 lead:"Tropa principal recomendada",dist:"Líder",fill:"Participantes",counter:"Contrarresta",copy:"Copiar al chat",copied:"¡Copiado!"
+enemyFocus:"Enfoque enemigo",
+counterLevel:"Nivel de contraataque",
+counterAdvantage:"Ventaja de contraataque",
 }
 };
 
@@ -273,9 +282,9 @@ else{
 }
 
 out.innerHTML=
-`<b>Enemy Focus:</b> ${names[l][enemy]} (${highest}%)<br>
-<b>Counter Level:</b> ${stage}<br>
-<b>Counter Advantage:</b> ${advantage}<br><br>
+<b>${t.enemyFocus}:</b> ${names[l][enemy]} (${highest}%)<br>
+<b>${t.counterLevel}:</b> ${stage}<br>
+<b>${t.counterAdvantage}:</b> ${advantage}<br><br>
 📤 <b>${t.dist}:</b><br>${leader}<br><br>
 👥 <b>${t.fill}:</b><br>${fillers}`;
 copyBtn.style.display="block";
