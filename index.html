@@ -458,7 +458,11 @@ case "outpost":
  break;
 
 case "shrine":
-    leaderPercent = 60;
+    if(tier === "plus1"){
+        leaderPercent = 65;
+    } else {
+        leaderPercent = 60;
+    }
     fillerPercent = Math.max(filler,50);
     break;
 
