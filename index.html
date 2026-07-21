@@ -60,6 +60,24 @@ border-radius:12px;
 cursor:pointer;
 }
 button:hover{background:#d97706}
+#secretSupport{
+    position:fixed;
+    right:14px;
+    bottom:14px;
+    width:18px;
+    height:18px;
+    border-radius:50%;
+    background:#FFD54F;
+    opacity:.55;
+    cursor:pointer;
+    z-index:999;
+    transition:.25s;
+}
+
+#secretSupport:hover{
+    opacity:1;
+    transform:scale(1.2);
+}
 .result{
     margin-top:20px;
     background:#0f172a;
@@ -394,7 +412,17 @@ document.addEventListener("click", function(e){
 });
 window.onload = function () {
 setLang();
-    
+const secretSupport = document.getElementById("secretSupport");
+
+secretSupport.onclick = function () {
+    alert(
+`☕ Support Stiefel™
+
+If this tool helps you and you would like to support future updates, you can leave a voluntary donation.
+
+Thank you very much! ❤️`
+    );
+};    
 };
 
 function calc(){
@@ -588,5 +616,6 @@ line-height:1.5;">
 Unofficial fan-made tool for Kingshot.<br>
 Kingshot is a trademark of its respective owner.
 </div>
+<div id="secretSupport"></div>
 </body>
 </html>
