@@ -228,6 +228,10 @@ stageBalanced:"Ausgeglichen",
 stageLight:"Leicht",
 stageMedium:"Mittel",
 stageHeavy:"Stark",
+advMinimal:"⚪ Minimal",
+advGood:"🔵 Gut",
+advStrong:"🟢 Stark",
+advExcellent:"🟣 Exzellent",
 help:"So findest du die gegnerischen Truppenprozente",
 helpPopup:`
 <h2>📊 Wo finde ich die gegnerischen Truppenprozente?</h2>
@@ -266,6 +270,10 @@ stageBalanced:"Balanced Counter",
 stageLight:"Light",
 stageMedium:"Medium",
 stageHeavy:"Heavy",
+advMinimal:"⚪ Minimal",
+advGood:"🔵 Good",
+advStrong:"🟢 Strong",
+advExcellent:"🟣 Excellent",
 help:"How to find enemy troop percentages",
 helpPopup:`
 <h2>📊 Where can I find the enemy troop percentages?</h2>
@@ -304,6 +312,10 @@ stageBalanced:"Equilibrado",
 stageLight:"Ligero",
 stageMedium:"Medio",
 stageHeavy:"Fuerte",
+advMinimal:"⚪ Mínimo",
+advGood:"🔵 Bueno",
+advStrong:"🟢 Fuerte",
+advExcellent:"🟣 Excelente",
 help:"Cómo encontrar los porcentajes enemigos",
 helpPopup:`
 <h2>📊 ¿Dónde puedo encontrar los porcentajes de las tropas enemigas?</h2>
@@ -488,17 +500,29 @@ let leader=dist(main,leaderPercent);
 let fillers=dist(main,fillerPercent);
 let advantage;
 
-if(highest>=60){
-    advantage="🟢 High";
+if(stage === "Balanced Counter"){
+    advantage = t.advMinimal;
 }
-else if(highest>=50){
-    advantage="🟡 Medium";
+else if(stage === "Light"){
+    advantage = t.advGood;
 }
-else if(highest>=40){
-    advantage="🔵 Small";
+else if(stage === "Medium"){
+    advantage = t.advStrong;
 }
 else{
-    advantage="⚪ Minimal";
+    advantage = t.advExcellent;
+}
+
+if(tier === "plus1"){
+    if(advantage === t.advExcellent){
+        advantage = t.advStrong;
+    }
+    else if(advantage === t.advStrong){
+        advantage = t.advGood;
+    }
+    else if(advantage === t.advGood){
+        advantage = t.advMinimal;
+    }
 }
 
 out.innerHTML = `
