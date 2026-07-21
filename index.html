@@ -403,7 +403,8 @@ const vals={Infantry:i,Cavalry:c,Marksmen:a};
 const sorted=Object.entries(vals).sort((x,y)=>y[1]-x[1]);
 const enemy=sorted[0][0];
 const highest=sorted[0][1];
-
+const second = sorted[1][1];
+const gap = highest - second;
 const counter={
 "Infantry":"Marksmen",
 "Marksmen":"Cavalry",
