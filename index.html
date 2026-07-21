@@ -617,5 +617,35 @@ Unofficial fan-made tool for Kingshot.<br>
 Kingshot is a trademark of its respective owner.
 </div>
 <div id="secretSupport"></div>
+
+<div id="supportPopup" style="display:none;">
+  <div id="supportBox">
+    <h3>❤️ Enjoying this free tool?</h3>
+
+    <p>
+      If this counter tool helps you,
+      you can support future updates with
+      a small voluntary donation.
+    </p>
+
+    <button onclick="window.open('https://paypal.me/MirkoLukovnjak','_blank')">
+      ❤️ Support
+    </button>
+
+    <button onclick="closeSupportPopup()">
+      Maybe later
+    </button>
+
+  </div>
+</div>
+<script>
+document.getElementById("secretSupport").onclick = function () {
+    document.getElementById("supportPopup").style.display = "flex";
+};
+
+function closeSupportPopup() {
+    document.getElementById("supportPopup").style.display = "none";
+}
+</script>
 </body>
 </html>
