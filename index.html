@@ -458,7 +458,11 @@ case "castle":
 } else {
     leaderPercent = 45;
 }
-fillerPercent = filler;
+if(tier === "plus1"){
+    fillerPercent = Math.max(filler + 3,45);
+}else{
+    fillerPercent = filler;
+}
 break;
 
 case "outpost":
