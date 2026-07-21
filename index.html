@@ -440,9 +440,13 @@ if(tier === "plus1"){
 switch(target.value){
 
 case "castle":
+    if(tier === "plus1"){
+    leaderPercent = 50;
+} else {
     leaderPercent = 45;
-    fillerPercent = filler;
-    break;
+}
+fillerPercent = filler;
+break;
 
 case "outpost":
     leaderPercent = 55;
