@@ -424,15 +424,15 @@ let filler=33;
 let leaderPercent = 45;
 let fillerPercent = filler;
 
-if(highest>=60){
+if(highest>=60 || gap>=35){
     stage="Heavy";
     filler=50;
 }
-else if(highest>=50){
+else if(highest>=50 || gap>=20){
     stage="Medium";
     filler=46;
 }
-else if(highest>=40){
+else if(highest>=40 || gap>=10){
     stage="Light";
     filler=44;
 }
