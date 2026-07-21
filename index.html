@@ -202,7 +202,7 @@ Kingshot<br>
 <script>
 const text={
 de:{
-title:"⚔️ Kingshot Konterrechner",lang:"Sprache",
+title:`⚔️ Kingshot<br><span class="subtitle">Konterrechner</span>`,
 inf:"Infanterie (%)",cav:"Kavallerie (%)",arc:"Schützen (%)",
 mode:"Modus",
 target:"Ziel",
@@ -236,7 +236,7 @@ helpPopup:`
 `,
 },
 en:{
-title:"⚔️ Kingshot Counter Tool",lang:"Language",
+title:`⚔️ Kingshot<br><span class="subtitle">Counter Tool</span>`,
 inf:"Infantry (%)",cav:"Cavalry (%)",arc:"Marksmen (%)",
 mode:"Mode",
 target:"Target",
@@ -270,7 +270,7 @@ helpPopup:`
 `,
 },
 es:{
-title:"⚔️ Calculadora Kingshot",lang:"Idioma",
+title:`⚔️ Kingshot<br><span class="subtitle">Calculadora</span>`,
 inf:"Infantería (%)",cav:"Caballería (%)",arc:"Tiradores (%)",
 mode:"Modo",
 target:"Objetivo",
@@ -309,7 +309,7 @@ function setLang(){
 let l=lang.value,t=text[l];
 const currentMode = mode.value;
 const currentTarget = target.value;
-title.innerText=t.title;
+title.innerHTML = t.title;
 langLabel.innerText=t.lang;
 infLabel.innerText=t.inf;
 cavLabel.innerText=t.cav;
