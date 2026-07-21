@@ -332,6 +332,7 @@ cavLabel.innerText=t.cav;
 arcLabel.innerText=t.arc;
 modeLabel.innerText=t.mode;
 targetLabel.innerText=t.target;
+tierLabel.innerText = t.tier;
 infoBox.innerText = t.info;
 helpBtn.innerText = "ⓘ " + t.help;
 helpContent.innerHTML = t.helpPopup;
@@ -346,6 +347,9 @@ target.add(new Option(t.castle,"castle"));
 target.add(new Option(t.outpost,"outpost"));
 target.add(new Option(t.shrine,"shrine"));
 target.value = currentTarget || "castle";
+enemyTier.innerHTML = "";
+enemyTier.add(new Option(t.same,"same"));
+enemyTier.add(new Option(t.plus1,"plus1"));
 if(copyBtn.style.display!=="none"){
     copyBtn.innerText=t.copy;
 }
@@ -400,7 +404,7 @@ es:{Infantry:"Infantería",Cavalry:"Caballería",Marksmen:"Tiradores"}
 };
 
 let l=lang.value,t=text[l];
-
+const tier = enemyTier.value;
 let stage="Balanced Counter";
 let filler=33;
 let leaderPercent = 45;
@@ -421,6 +425,11 @@ else if(highest>=40){
 else{
     stage="Balanced Counter";
     filler=42;
+}
+if(tier === "plus1"){
+    if(stage === "Balanced Counter") stage = "Light";
+    else if(stage === "Light") stage = "Medium";
+    else if(stage === "Medium") stage = "Heavy";
 }
 leaderPercent = 45;
 fillerPercent = filler;
