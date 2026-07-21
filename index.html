@@ -449,7 +449,11 @@ fillerPercent = filler;
 break;
 
 case "outpost":
-    leaderPercent = 55;
+    if(tier === "plus1"){
+        leaderPercent = 60;
+    } else {
+        leaderPercent = 55;
+    }
     fillerPercent = Math.max(filler,45);
     break;
 
