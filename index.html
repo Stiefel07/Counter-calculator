@@ -749,16 +749,15 @@ function copyResult(){
 
     if(!filler) return;
 
-    const text =
+    const copyText =
         "👥 Füller\n\n" +
         filler
             .replace(/<br>/g,"\n")
             .replace(/<[^>]*>/g,"")
             .trim();
 
-    navigator.clipboard.writeText(text);
-
-    copyBtn.innerText = text[lang.value].copied;
+    navigator.clipboard.writeText(copyText);
+copyBtn.innerText = "Copied!";
 
 }
 
