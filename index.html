@@ -533,10 +533,12 @@ tierLabel.innerText = t.tier;
 infoBox.innerText = t.info;
 helpBtn.innerText = "ⓘ " + t.help;
 helpContent.innerHTML = t.helpPopup;
-document.getElementById("supportTitle").innerHTML = t.donateTitle;
-document.getElementById("supportText").innerHTML = t.donateText;
-document.getElementById("donateBtn").innerHTML = t.donateBtn;
-document.getElementById("laterBtn").innerHTML = t.laterBtn;
+if(document.getElementById("supportTitle")){
+    document.getElementById("supportTitle").innerHTML = t.donateTitle;
+    document.getElementById("supportText").innerHTML = t.donateText;
+    document.getElementById("donateBtn").innerHTML = t.donateBtn;
+    document.getElementById("laterBtn").innerHTML = t.laterBtn;
+}
 guideHeader.innerText = guideOpen ? t.guideHide : t.guideShow;
 calcBtn.innerText=t.calc;
 
