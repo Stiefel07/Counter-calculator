@@ -113,6 +113,32 @@ line-height:1.6;
 margin:18px 0;
 color:#fff;
 }
+#introContent{
+    overflow:hidden;
+    max-height:1000px;
+    transition:max-height .4s ease;
+}
+
+#introContent.collapsed{
+    max-height:0;
+}
+
+#toggleIntro{
+    width:100%;
+    margin-top:18px;
+    padding:14px;
+    background:#2563eb;
+    color:#fff;
+    border:none;
+    border-radius:12px;
+    font-size:18px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+#toggleIntro:hover{
+    background:#1d4ed8;
+}
 #supportBox button:last-child{
     background:#4b5563;
 }
@@ -196,7 +222,25 @@ margin-top:10px;
     font-size:18px;
     line-height:1.6;
 }
+#guideContent{
+    overflow:hidden;
+    max-height:220px;
+    transition:max-height .3s ease;
+}
 
+#guideContent.collapsed{
+    max-height:0;
+}
+
+#guideHeader{
+    text-align:center;
+    margin:12px 0;
+    font-size:16px;
+    font-weight:bold;
+    color:#FFD54F;
+    cursor:pointer;
+    user-select:none;
+}
 #closeHelpBtn{
     width:100%;
     margin-top:20px;
@@ -222,10 +266,20 @@ margin-top:10px;
 Kingshot<br>
 <span class="subtitle">Counter Tool</span>
 </h1>
+
+<div id="guideHeader">
+▼ Show Quick Guide
+</div>
+
+<div id="guideContent">
+
 <div id="infoBox" class="infoBox"></div>
+
 <button id="helpBtn" type="button">
-    ⓘ How to find enemy percentages
+    ℹ️ How to find enemy troop percentages
 </button>
+
+</div>
 <div id="helpPopup">
     <div id="helpContent">
     </div>
