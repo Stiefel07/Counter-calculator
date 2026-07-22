@@ -642,9 +642,10 @@ switch(target.value){
 
 case "castle":
     if(tier === "plus1"){
-    leaderPercent = 50;
+    leaderPercent = 55;
 } else {
-    leaderPercent = 45;
+    leaderPercent = 50;
+}
 }
 if(tier === "plus1"){
     fillerPercent = Math.max(filler + 3,45);
@@ -655,10 +656,10 @@ break;
 
 case "outpost":
     if(tier === "plus1"){
+    leaderPercent = 65;
+} else {
     leaderPercent = 60;
- } else {
-        leaderPercent = 55;
- }
+}
  if(tier === "plus1"){
     fillerPercent = Math.max(filler + 3,48);
 }else{
@@ -668,10 +669,10 @@ case "outpost":
 
 case "shrine":
     if(tier === "plus1"){
-        leaderPercent = 65;
-    } else {
-        leaderPercent = 60;
-    }
+    leaderPercent = 70;
+} else {
+    leaderPercent = 65;
+}
     if(tier === "plus1"){
     fillerPercent = Math.max(filler + 3,53);
 }else{
