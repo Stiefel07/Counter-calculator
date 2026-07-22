@@ -292,13 +292,13 @@ Kingshot<br>
 </select>
 
 <label id="infLabel">Infantry (%)</label>
-<input id="inf" type="number" value="33" oninput="autoFill('inf')">
+<input id="inf" type="number" value="33" min="0" max="100" oninput="autoFill('inf')">
 
 <label id="cavLabel">Cavalry (%)</label>
-<input id="cav" type="number" value="33" oninput="autoFill('cav')">
+<input id="cav" type="number" value="33" min="0" max="100" oninput="autoFill('cav')">
 
 <label id="arcLabel">Marksmen (%)</label>
-<input id="arc" type="number" value="34" oninput="autoFill('arc')">
+<input id="arc" type="number" value="34" min="0" max="100" oninput="autoFill('arc')">
 
 <label id="modeLabel">Mode</label>
 <select id="mode"></select>
