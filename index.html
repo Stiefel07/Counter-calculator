@@ -884,19 +884,24 @@ let deferredPrompt;
 window.addEventListener("beforeinstallprompt", (e) => {
     e.preventDefault();
     deferredPrompt = e;
-
+if (window.navigator.standalone || window.matchMedia("(display-mode: standalone)").matches) {
+    document.getElementById("installBtn").style.display = "none";
+} else {
     document.getElementById("installBtn").style.display = "flex";
+}
 });
 
 document.getElementById("installBtn").onclick = async function () {
 
     const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
-
+    
+    
+    }
     if (isIOS) {
         alert("Tap Share (⬆️) and choose 'Add to Home Screen'.");
         return;
     }
-
+    
     if (!deferredPrompt) {
         alert("Installation is not available.");
         return;
