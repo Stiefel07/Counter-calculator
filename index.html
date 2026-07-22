@@ -641,10 +641,17 @@ if(tier === "plus1"){
 switch(target.value){
 
 case "castle":
-    if(tier === "plus1"){
-    leaderPercent = 55;
-} else {
-    leaderPercent = 50;
+    if(stage === "Balanced Counter"){
+    leaderPercent = (tier === "plus1") ? 52 : 50;
+}
+else if(stage === "Light"){
+    leaderPercent = (tier === "plus1") ? 55 : 52;
+}
+else if(stage === "Medium"){
+    leaderPercent = (tier === "plus1") ? 58 : 55;
+}
+else{
+    leaderPercent = (tier === "plus1") ? 60 : 58;
 }
 if(tier === "plus1"){
     fillerPercent = Math.max(filler + 3,45);
