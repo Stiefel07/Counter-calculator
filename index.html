@@ -879,40 +879,62 @@ document.getElementById("secretSupport").onclick = function () {
 function closeSupportPopup() {
     document.getElementById("supportPopup").style.display = "none";
 }
-let deferredPrompt;
+let deferredPrompt = null;
 
 window.addEventListener("beforeinstallprompt", (e) => {
     e.preventDefault();
     deferredPrompt = e;
-if (window.navigator.standalone || window.matchMedia("(display-mode: standalone)").matches) {
-    document.getElementById("installBtn").style.display = "none";
-} else {
-    document.getElementById("installBtn").style.display = "flex";
-}
 });
 
+window.addEventListener("load", () => {
+
+    const btn = document.getElementById("installBtn");
+
+    if (window.matchMedia("(display-mode: standalone)").matches ||
+        window.navigator.standalone) {
+
+        btn.style.display = "none";
+
+    } else {
+
+        btn.style.display = "flex";
 document.getElementById("installBtn").onclick = async function () {
 
-    const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
-    
-    if (isIOS) {
-        alert("Tap Share (⬆️) and choose 'Add to Home Screen'.");
+    // Bereits als App geöffnet?
+    if (window.matchMedia("(display-mode: standalone)").matches ||
+        window.navigator.standalone) {
+        this.style.display = "none";
         return;
     }
-    
-    if (!deferredPrompt) {
-        alert("Installation is not available.");
-        return;
-    }
-if (window.matchMedia("(display-mode: standalone)").matches || window.navigator.standalone) {
-    document.getElementById("installBtn").style.display = "none";
-}
-    deferredPrompt.prompt();
-    await deferredPrompt.userChoice;
-    deferredPrompt = null;
 
-    this.style.display = "none";
+    // iPhone / iPad
+    const isIOS =
+        /iPad|iPhone|iPod/.test(navigator.userAgent) ||
+        (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+
+    if (isIOS) {
+        alert(
+            "📲 Install Battle Counter\n\n" +
+            "1. Tap the Share button (⬆️)\n" +
+            "2. Select 'Add to Home Screen'\n" +
+            "3. Tap 'Add'"
+        );
+        return;
+    }
+
+    // Android / Desktop
+    if (deferredPrompt) {
+        deferredPrompt.prompt();
+        await deferredPrompt.userChoice;
+        deferredPrompt = null;
+        this.style.display = "none";
+    } else {
+        alert("Installation is not available on this device.");
+    }
 };
+    }
+
+});
 
 </script>
 </body>
