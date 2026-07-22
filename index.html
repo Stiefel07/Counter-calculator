@@ -522,7 +522,9 @@ window.onload = function () {
     setLang();
 };
 let guideOpen = false;
-
+const content = document.getElementById("guideContent");
+content.style.display = "none";
+document.getElementById("guideHeader").innerHTML = "▶ Show Quick Guide";
 document.getElementById("guideHeader").onclick = function () {
 
     const content = document.getElementById("guideContent");
