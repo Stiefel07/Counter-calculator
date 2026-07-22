@@ -514,7 +514,27 @@ document.addEventListener("click", function(e){
 window.onload = function () {
     setLang();
 };
+let guideOpen = true;
 
+document.getElementById("guideHeader").onclick = function () {
+
+    const content = document.getElementById("guideContent");
+
+    if (guideOpen) {
+
+        content.style.display = "none";
+        this.innerHTML = "▶ Show Quick Guide";
+        guideOpen = false;
+
+    } else {
+
+        content.style.display = "block";
+        this.innerHTML = "▼ Hide Quick Guide";
+        guideOpen = true;
+
+    }
+
+};
 function calc(){
 let i=+inf.value,c=+cav.value,a=+arc.value;
 
