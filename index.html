@@ -759,7 +759,9 @@ function copyResult(){
         return;
     }
 
-    const copyText = lines.slice(start).join("\n");
+    const copyText =
+    "👥 Fillers\n\n" +
+    lines.slice(start + 1).join("\n");
 
     navigator.clipboard.writeText(copyText).then(() => {
         copyBtn.innerText = "Copied!";
