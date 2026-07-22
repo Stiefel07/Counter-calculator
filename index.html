@@ -743,23 +743,20 @@ copyBtn.style.display="none";
 
 function copyResult(){
 
-    const result = out.innerHTML;
+    let txt = out.innerText;
 
-    const filler = result.split("👥")[1];
+    // Alles vor "👥 Fillers" bzw. "👥 Füller" entfernen
+    txt = txt.replace(/^.*?(👥\s*(Fillers|Füller))/s, "👥 $1");
 
-    if(!filler) return;
+    // Zweites "Fillers:" oder "Füller:" entfernen
+    txt = txt.replace(/\n\s*(Fillers|Füller):\s*\n/i, "\n");
 
-    const text =
-        "👥 Füller\n\n" +
-        filler
-            .replace(/<br>/g,"\n")
-            .replace(/<[^>]*>/g,"")
-            .trim();
+    // Mehrere Leerzeilen auf eine reduzieren
+    txt = txt.replace(/\n{2,}/g, "\n");
 
-    navigator.clipboard.writeText(text);
+    navigator.clipboard.writeText(txt.trim());
 
     copyBtn.innerText = text[lang.value].copied;
-
 }
 
 </script>
