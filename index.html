@@ -845,6 +845,30 @@ line-height:1.5;">
 Unofficial fan-made tool for Kingshot.<br>
 Kingshot is a trademark of its respective owner.
 </div>
+<!-- Install Popup -->
+
+<div id="installPopup" style="display:none;">
+  <div id="supportBox">
+
+    <h3>📲 Install Battle Counter</h3>
+
+    <p>
+      <b>iPhone / iPad</b><br><br>
+
+      1️⃣ Tap <b>Share</b> ⬆️<br><br>
+
+      2️⃣ Choose <b>Add to Home Screen</b><br><br>
+
+      3️⃣ Tap <b>Add</b>
+    </p>
+
+    <button onclick="closeInstallPopup()">
+      OK
+    </button>
+
+  </div>
+</div>
+
 <div id="secretSupport"></div>
 
 <div id="supportPopup" style="display:none;">
@@ -913,14 +937,9 @@ document.getElementById("installBtn").onclick = async function () {
         (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
 
     if (isIOS) {
-        alert(
-            "📲 Install Battle Counter\n\n" +
-            "1. Tap the Share button (⬆️)\n" +
-            "2. Select 'Add to Home Screen'\n" +
-            "3. Tap 'Add'"
-        );
-        return;
-    }
+    document.getElementById("installPopup").style.display = "flex";
+    return;
+}
 
     // Android / Desktop
     if (deferredPrompt) {
