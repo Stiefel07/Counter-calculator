@@ -262,7 +262,7 @@ margin-top:10px;
 }
 #installBtn{
 position:absolute;
-top:16px;
+top:14px;
 right:16px;
 width:32px;
 height:32px;
@@ -890,28 +890,25 @@ window.addEventListener("beforeinstallprompt", (e) => {
 
 document.getElementById("installBtn").onclick = async function () {
 
-    if (!deferredPrompt) {
-        alert("Use your browser menu and choose 'Add to Home Screen'.");
-        return;
-    }
+    const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
 
-    deferredPrompt.prompt();
-    await deferredPrompt.userChoice;
-    deferredPrompt = null;
-
-    this.style.display = "none";
-};
-document.getElementById("installBtn").onclick = async function () {
-    if (!deferredPrompt) {
+    if (isIOS) {
         alert("Tap Share (⬆️) and choose 'Add to Home Screen'.");
         return;
     }
 
+    if (!deferredPrompt) {
+        alert("Installation is not available.");
+        return;
+    }
+
     deferredPrompt.prompt();
     await deferredPrompt.userChoice;
     deferredPrompt = null;
+
     this.style.display = "none";
 };
+
 </script>
 </body>
 </html>
