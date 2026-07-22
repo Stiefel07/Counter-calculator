@@ -743,24 +743,32 @@ copyBtn.style.display="none";
 
 function copyResult(){
 
-    const result = out.innerHTML;
+    const temp = document.createElement("div");
+    temp.innerHTML = out.innerHTML;
 
-    const filler = result.split("👥")[1];
+    const lines = temp.innerText.split("\n");
 
-    if(!filler) return;
+    const start = lines.findIndex(line =>
+        line.includes("Fillers") ||
+        line.includes("Füller") ||
+        line.includes("Participantes")
+    );
 
-    const copyText =
-        "👥 Fillers\n\n" +
-        filler
-            .replace(/<br>/g,"\n")
-            .replace(/<[^>]*>/g,"")
-            .trim();
+    if(start < 0){
+        alert("No filler troops found.");
+        return;
+    }
 
-    navigator.clipboard.writeText(copyText);
+    const copyText = lines.slice(start).join("\n");
 
-    copyBtn.innerText = "Copied!";
+    navigator.clipboard.writeText(copyText).then(() => {
+        copyBtn.innerText = "Copied!";
+        setTimeout(() => {
+            copyBtn.innerText = text[lang.value].copy;
+        },1500);
+    });
+
 }
-
 </script>
 
 <footer style="
