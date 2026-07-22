@@ -641,25 +641,26 @@ if(tier === "plus1"){
 switch(target.value){
 
 case "castle":
-    if(stage === "Balanced Counter"){
-    leaderPercent = (tier === "plus1") ? 52 : 50;
-}
-else if(stage === "Light"){
-    leaderPercent = (tier === "plus1") ? 55 : 52;
-}
-else if(stage === "Medium"){
-    leaderPercent = (tier === "plus1") ? 58 : 55;
-}
-else{
-    leaderPercent = (tier === "plus1") ? 60 : 58;
-}
-if(tier === "plus1"){
-    fillerPercent = Math.max(filler + 3,45);
-}else{
-    fillerPercent = filler;
-}
-break;
+    case "castle":
 
+    if(stage === "Balanced Counter"){
+        leaderPercent = (tier === "plus1") ? 52 : 50;
+        fillerPercent = 42;
+    }
+    else if(stage === "Light"){
+        leaderPercent = (tier === "plus1") ? 57 : 55;
+        fillerPercent = 43;
+    }
+    else if(stage === "Medium"){
+        leaderPercent = (tier === "plus1") ? 62 : 60;
+        fillerPercent = 45;
+    }
+    else{
+        leaderPercent = (tier === "plus1") ? 67 : 65;
+        fillerPercent = 48;
+    }
+
+    break;
 case "outpost":
     if(tier === "plus1"){
     leaderPercent = 65;
