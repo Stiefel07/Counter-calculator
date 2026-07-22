@@ -937,7 +937,12 @@ document.getElementById("installBtn").onclick = async function () {
         (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
 
     if (isIOS) {
-    document.getElementById("installPopup").style.display = "flex";
+    alert(
+        "📲 Install Battle Counter\n\n" +
+        "1. Tap the Share button (⬆️)\n" +
+        "2. Select 'Add to Home Screen'\n" +
+        "3. Tap 'Add'"
+    );
     return;
 }
 
