@@ -358,6 +358,10 @@ guideHide:"▲ Schnellhilfe ausblenden",
 help:"So findest du die gegnerischen Truppen",
 guideShow:"▼ Schnellhilfe anzeigen",
 guideHide:"▲ Schnellhilfe ausblenden",
+donateTitle:"Projekt unterstützen",
+donateText:"Wenn dir dieses Tool geholfen hat, kannst du die Weiterentwicklung mit einer freiwilligen Spende unterstützen.<br><br>Deine Unterstützung hilft dabei, das Projekt am Leben zu halten und neue Funktionen zu entwickeln.<br><br>Vielen herzlichen Dank! ❤️",
+donateBtn:"💛 Spenden",
+laterBtn:"✖ Jetzt nicht",
 helpPopup:`
 <p>
 1. Öffne den Kampfbericht.<br><br>
@@ -402,6 +406,10 @@ advExcellent:"🟣 Major Weakness",
 help:"How to find enemy troop percentages",
 guideShow:"▼ Show Quick Guide",
 guideHide:"▲ Hide Quick Guide",
+donateTitle:"Support the Project",
+donateText:"If this tool has been helpful to you, you can support future updates with a voluntary donation.<br><br>Your support helps keep the project alive and allows new features to be developed.<br><br>Thank you very much! ❤️",
+donateBtn:"💛 Donate",
+laterBtn:"✖ Not now",
 helpPopup:`
 <h2>📊 Where can I find the enemy troop percentages?</h2>
 
@@ -448,6 +456,10 @@ advExcellent:"🟣 Debilidad importante",
 help:"Cómo encontrar los porcentajes del enemigo",
 guideShow:"▼ Mostrar guía rápida",
 guideHide:"▲ Ocultar guía rápida",
+donateTitle:"Apoya el proyecto",
+donateText:"Si esta herramienta te ha sido útil, puedes apoyar futuras actualizaciones con una donación voluntaria.<br><br>Tu apoyo ayuda a mantener vivo el proyecto y permite desarrollar nuevas funciones.<br><br>¡Muchas gracias! ❤️",
+donateBtn:"💛 Donar",
+laterBtn:"✖ Ahora no",
 helpPopup:`
 <h2>📊 ¿Dónde puedo encontrar los porcentajes de las tropas enemigas?</h2>
 
@@ -479,6 +491,10 @@ tierLabel.innerText = t.tier;
 infoBox.innerText = t.info;
 helpBtn.innerText = "ⓘ " + t.help;
 helpContent.innerHTML = t.helpPopup;
+document.getElementById("supportTitle").innerHTML = t.donateTitle;
+document.getElementById("supportText").innerHTML = t.donateText;
+document.getElementById("donateBtn").innerHTML = t.donateBtn;
+document.getElementById("laterBtn").innerHTML = t.laterBtn;
 guideHeader.innerText = guideOpen ? t.guideHide : t.guideShow;
 calcBtn.innerText=t.calc;
 
