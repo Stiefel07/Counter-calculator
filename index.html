@@ -548,13 +548,17 @@ tierLabel.innerText = t.tier;
 infoBox.innerText = t.info;
 helpBtn.innerText = "ⓘ " + t.help;
 helpContent.innerHTML = t.helpPopup;
-const installTitle = document.querySelector("#installPopup h3");
-const installText = document.querySelector("#installPopup p");
-const installButton = document.querySelector("#installPopup button");
+document.getElementById("installTitle").innerHTML = t.installTitle;
 
-if (installTitle) installTitle.innerHTML = t.installTitle;
+document.getElementById("installText").innerHTML =
+"<b>iPhone / iPad</b><br><br>" +
+t.installStep1 + "<br><br>" +
+t.installStep2 + "<br><br>" +
+t.installStep3;
 
-if (installText) {
+document.getElementById("installOk").innerHTML = t.installOk;
+
+
     installText.innerHTML =
         "<b>iPhone / iPad</b><br><br>" +
         t.installStep1 + "<br><br>" +
@@ -894,21 +898,18 @@ Kingshot is a trademark of its respective owner.
 <div id="installPopup" style="display:none;">
   <div id="supportBox">
 
-    <h3>📲 Install Battle Counter</h3>
+    <h3 id="installTitle">📲 Install Battle Counter</h3>
 
-    <p>
-      <b>iPhone / iPad</b><br><br>
+    <p id="installText">
+<b>iPhone / iPad</b><br><br>
+1️⃣ Tap the Share button ⬆️<br><br>
+2️⃣ Choose 'Add to Home Screen'<br><br>
+3️⃣ Tap 'Add'
+</p>
 
-      1️⃣ Tap <b>Share</b> ⬆️<br><br>
-
-      2️⃣ Choose <b>Add to Home Screen</b><br><br>
-
-      3️⃣ Tap <b>Add</b>
-    </p>
-
-    <button onclick="closeInstallPopup()">
-      OK
-    </button>
+    <button id="installOk" onclick="closeInstallPopup()">
+OK
+</button>
 
   </div>
 </div>
