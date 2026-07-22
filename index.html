@@ -901,7 +901,9 @@ document.getElementById("installBtn").onclick = async function () {
         alert("Installation is not available.");
         return;
     }
-
+if (window.matchMedia("(display-mode: standalone)").matches || window.navigator.standalone) {
+    document.getElementById("installBtn").style.display = "none";
+}
     deferredPrompt.prompt();
     await deferredPrompt.userChoice;
     deferredPrompt = null;
