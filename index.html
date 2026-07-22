@@ -18,6 +18,7 @@ margin:12px auto;
 padding:20px;
 }
 .card{
+position:relative;
 background:rgba(255,255,255,.12);
 backdrop-filter:blur(10px);
 border-radius:18px;
@@ -259,11 +260,38 @@ margin-top:10px;
 #closeHelpBtn:hover{
     background:#1d4ed8;
 }
+#installBtn{
+position:absolute;
+top:16px;
+right:16px;
+width:38px;
+height:38px;
+margin:0;
+padding:0;
+border:none;
+border-radius:50%;
+background:#2563eb;
+color:#fff;
+font-size:20px;
+display:flex;
+align-items:center;
+justify-content:center;
+cursor:pointer;
+box-shadow:0 4px 12px rgba(0,0,0,.35);
+}
+
+#installBtn:hover{
+background:#1d4ed8;
+transform:scale(1.05);
+}
 </style>
 </head>
 <body>
 <div class="container">
 <div class="card">
+<button id="installBtn" type="button" title="Install App">
+📲
+</button>
 <h1 id="title">
 Kingshot<br>
 <span class="subtitle">Counter Tool</span>
@@ -851,6 +879,28 @@ document.getElementById("secretSupport").onclick = function () {
 function closeSupportPopup() {
     document.getElementById("supportPopup").style.display = "none";
 }
+let deferredPrompt;
+
+window.addEventListener("beforeinstallprompt", (e) => {
+    e.preventDefault();
+    deferredPrompt = e;
+
+    document.getElementById("installBtn").style.display = "flex";
+});
+
+document.getElementById("installBtn").onclick = async function () {
+
+    if (!deferredPrompt) {
+        alert("Use your browser menu and choose 'Add to Home Screen'.");
+        return;
+    }
+
+    deferredPrompt.prompt();
+    await deferredPrompt.userChoice;
+    deferredPrompt = null;
+
+    this.style.display = "none";
+};
 </script>
 </body>
 </html>
