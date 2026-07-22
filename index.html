@@ -682,16 +682,24 @@ case "outpost":
     break;
 
 case "shrine":
-    if(tier === "plus1"){
-    leaderPercent = 70;
-} else {
-    leaderPercent = 65;
-}
-    if(tier === "plus1"){
-    fillerPercent = Math.max(filler + 3,53);
-}else{
-    fillerPercent = Math.max(filler,50);
-}
+
+    if(stage === "Balanced Counter"){
+        leaderPercent = (tier === "plus1") ? 66 : 64;
+        fillerPercent = 46;
+    }
+    else if(stage === "Light"){
+        leaderPercent = (tier === "plus1") ? 70 : 68;
+        fillerPercent = 48;
+    }
+    else if(stage === "Medium"){
+        leaderPercent = (tier === "plus1") ? 76 : 74;
+        fillerPercent = 50;
+    }
+    else{
+        leaderPercent = (tier === "plus1") ? 82 : 80;
+        fillerPercent = 53;
+    }
+
     break;
 
 }
