@@ -405,6 +405,11 @@ donateText:"Wenn dir dieses Tool geholfen hat, kannst du die Weiterentwicklung m
 donateBtn:"💛 Spenden",
 laterBtn:"✖ Jetzt nicht",
 helpPopup:`
+installTitle:"📲 Battle Counter installieren",
+installStep1:"1️⃣ Tippe auf den Share-Button ⬆️",
+installStep2:"2️⃣ Wähle 'Zum Home-Bildschirm'",
+installStep3:"3️⃣ Tippe auf 'Hinzufügen'",
+installOk:"OK",
 <p>
 1. Öffne den Kampfbericht.<br><br>
 2. Scrolle bis <b>„Schwadron insgesamt“</b>.<br><br>
@@ -453,6 +458,11 @@ donateText:"If this tool has been helpful to you, you can support future updates
 donateBtn:"💛 Donate",
 laterBtn:"✖ Not now",
 helpPopup:`
+installTitle:"📲 Install Battle Counter",
+installStep1:"1️⃣ Tap the Share button ⬆️",
+installStep2:"2️⃣ Choose 'Add to Home Screen'",
+installStep3:"3️⃣ Tap 'Add'",
+installOk:"OK",
 <h2>📊 Where can I find the enemy troop percentages?</h2>
 
 <p>
@@ -503,6 +513,11 @@ donateText:"Si esta herramienta te ha sido útil, puedes apoyar futuras actualiz
 donateBtn:"💛 Donar",
 laterBtn:"✖ Ahora no",
 helpPopup:`
+installTitle:"📲 Instalar Battle Counter",
+installStep1:"1️⃣ Pulsa el botón Share ⬆️",
+installStep2:"2️⃣ Selecciona 'Añadir a pantalla de inicio'",
+installStep3:"3️⃣ Pulsa 'Añadir'",
+installOk:"OK",
 <h2>📊 ¿Dónde puedo encontrar los porcentajes de las tropas enemigas?</h2>
 
 <p>
@@ -533,6 +548,21 @@ tierLabel.innerText = t.tier;
 infoBox.innerText = t.info;
 helpBtn.innerText = "ⓘ " + t.help;
 helpContent.innerHTML = t.helpPopup;
+const installTitle = document.querySelector("#installPopup h3");
+const installText = document.querySelector("#installPopup p");
+const installButton = document.querySelector("#installPopup button");
+
+if (installTitle) installTitle.innerHTML = t.installTitle;
+
+if (installText) {
+    installText.innerHTML =
+        "<b>iPhone / iPad</b><br><br>" +
+        t.installStep1 + "<br><br>" +
+        t.installStep2 + "<br><br>" +
+        t.installStep3;
+}
+
+if (installButton) installButton.innerHTML = t.installOk;
 if(document.getElementById("supportTitle")){
     document.getElementById("supportTitle").innerHTML = t.donateTitle;
     document.getElementById("supportText").innerHTML = t.donateText;
