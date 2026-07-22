@@ -750,15 +750,15 @@ function copyResult(){
     if(!filler) return;
 
     const copyText =
-        "👥 Füller\n\n" +
+        "👥 Fillers\n\n" +
         filler
             .replace(/<br>/g,"\n")
             .replace(/<[^>]*>/g,"")
             .trim();
 
     navigator.clipboard.writeText(copyText);
-copyBtn.innerText = "Copied!";
 
+    copyBtn.innerText = "Copied!";
 }
 
 </script>
