@@ -627,6 +627,22 @@ else if(highest>=40 || gap>=10){
 else{
     stage="Balanced Counter";
     filler = 36;
+if(stage==="Heavy"){
+    leaderPercent = 65;
+    filler = 55;
+}
+else if(stage==="Medium"){
+    leaderPercent = 60;
+    filler = 50;
+}
+else if(stage==="Light"){
+    leaderPercent = 55;
+    filler = 45;
+}
+else{
+    leaderPercent = 50;
+    filler = 40;
+
 }
 if(tier === "plus1"){
     if(stage === "Balanced Counter") stage = "Light";
