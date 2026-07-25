@@ -692,8 +692,11 @@ document.addEventListener("click", function(e){
     }
 });
 window.onload = function () {
-    setLang();
-
+    try {
+        setLang();
+    } catch (e) {
+        alert(e.message);
+    }
 };
 let guideOpen = false;
 const content = document.getElementById("guideContent");
