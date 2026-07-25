@@ -341,7 +341,6 @@ Kingshot<br>
 <option value="en">English</option>
 <option value="es">Español</option>
 <option value="de">Deutsch</option>
-<option value="zh">中文</option>
 </select>
 
 <label id="infLabel">Infantry (%)</label>
@@ -547,75 +546,8 @@ helpPopup:`
 <button id="closeHelpBtn">Cerrar</button>
 `,
 },
-zh:{
-title:`⚔️ Battle<br><span class="subtitle">Counter ⚔️</span>`,
-lang:"语言",
-inf:"Infantry (%)",
-cav:"Cavalry (%)",
-arc:"Marksmen (%)",
-mode:"Mode",
-target:"Target",
-tier:"Enemy Tier",
-same:"Same Tier",
-plus1:"Enemy +1 Tier",
-info:"Enter the enemy troop percentages below.",
-castle:"🏰 Castle",
-outpost:"🏕️ Outpost",
-shrine:"🏛️ Shrine / Fortress",
-calc:"Calculate Counter",
-rally:"🏰 Rally Leader",
-solo:"⚔️ Solo (Castle)",
-lead:"Recommended Main Troop",
-dist:"Leader",
-fill:"Fillers",
-counter:"Counters",
-copy:"Copy to Chat",
-copied:"Copied!",
-enemyFocus:"Enemy Focus",
-counterLevel:"Counter Level",
-counterAdvantage:"Counter Advantage",
-stageBalanced:"Balanced Counter",
-stageLight:"Light",
-stageMedium:"Medium",
-stageHeavy:"Heavy",
-enemyWeakness:"Enemy Weakness",
+};
 
-advMinimal:"⚪ No Clear Weakness",
-advGood:"🔵 Small Weakness",
-advStrong:"🟢 Clear Weakness",
-advExcellent:"🟣 Major Weakness",
-
-help:"How to find enemy troop percentages",
-guideShow:"▼ Show Quick Guide",
-guideHide:"▲ Hide Quick Guide",
-
-donateTitle:"Support the Project",
-donateText:"If this tool has been helpful to you, you can support future updates with a voluntary donation.<br><br>Your support helps keep the project alive and allows new features to be developed.<br><br>Thank you very much! ❤️",
-
-donateBtn:"💛 Donate",
-laterBtn:"✖ Not now",
-
-installTitle:"📲 Install Battle Counter",
-installStep1:"1️⃣ Tap the Share button ⬆️",
-installStep2:"2️⃣ Choose 'Add to Home Screen'",
-installStep3:"3️⃣ Tap 'Add'",
-installOk:"OK",
-helpPopup:`
-<h2>📊 Where can I find the enemy troop percentages?</h2>
-
-<p>
-1. Open the battle report.<br><br>
-2. Scroll down to <b>Squad Total</b>.<br><br>
-3. Tap the small <b>ⓘ</b> icon.<br><br>
-4. A window will open showing the enemy troop percentages.<br><br>
-5. Enter the Infantry, Cavalry and Marksmen percentages into the Counter Tool.
-</p>
-
-<img src="help.png.PNG" alt="Help" style="display:block;width:100%;height:auto;border-radius:12px;margin:20px 0;">
-
-<button id="closeHelpBtn">Close</button>
-`,
-},
 function setLang(){
 let l=lang.value,t=text[l];
 const currentMode = mode.value;
