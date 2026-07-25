@@ -614,6 +614,7 @@ helpPopup:`
 
 function setLang(){
 let l=lang.value,t=text[l];
+alert("Sprache: " + l + " / Text gefunden: " + (t ? "JA" : "NEIN"));
 const currentMode = mode.value;
 const currentTarget = target.value;
 title.innerHTML = t.title;
