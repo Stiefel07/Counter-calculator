@@ -15,7 +15,7 @@ function autoFill(changed){
     }
 
     if(changed==="arc"){
-        if(i + a <= 100) cav.value = 100 - i - 
+        if(i + a <= 100) cav.value = 100 - i - a;
     }
 }
 function calc(){
@@ -41,7 +41,8 @@ const counter={
 const names={
 de:{Infantry:"Infanterie",Cavalry:"Kavallerie",Marksmen:"Schützen"},
 en:{Infantry:"Infantry",Cavalry:"Cavalry",Marksmen:"Marksmen"},
-es:{Infantry:"Infantería",Cavalry:"Caballería",Marksmen:"Tiradores"}
+es:{Infantry:"Infantería",Cavalry:"Caballería",Marksmen:"Tiradores"},
+zh:{Infantry:"步兵",Cavalry:"骑兵",Marksmen:"射手"}
 };
 
 let l=lang.value,t=text[l];
