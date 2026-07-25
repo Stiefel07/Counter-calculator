@@ -545,13 +545,14 @@ helpPopup:`
 </p>
 <img src="help.png.PNG" alt="Ayuda" style="display:block;width:100%;height:auto;border-radius:12px;margin:20px 0;">
 <button id="closeHelpBtn">Cerrar</button>
-
+`,
 },
 zh:{
-     lang:"语言",
 title:`⚔️ Battle<br><span class="subtitle">Counter ⚔️</span>`,
-lang:"Language",
-inf:"Infantry (%)",cav:"Cavalry (%)",arc:"Marksmen (%)",
+lang:"语言",
+inf:"Infantry (%)",
+cav:"Cavalry (%)",
+arc:"Marksmen (%)",
 mode:"Mode",
 target:"Target",
 tier:"Enemy Tier",
@@ -562,8 +563,14 @@ castle:"🏰 Castle",
 outpost:"🏕️ Outpost",
 shrine:"🏛️ Shrine / Fortress",
 calc:"Calculate Counter",
-rally:"🏰 Rally Leader",solo:"⚔️ Solo (Castle)",
-lead:"Recommended Main Troop",dist:"Leader",fill:"Fillers",counter:"Counters",copy:"Copy to Chat",copied:"Copied!",
+rally:"🏰 Rally Leader",
+solo:"⚔️ Solo (Castle)",
+lead:"Recommended Main Troop",
+dist:"Leader",
+fill:"Fillers",
+counter:"Counters",
+copy:"Copy to Chat",
+copied:"Copied!",
 enemyFocus:"Enemy Focus",
 counterLevel:"Counter Level",
 counterAdvantage:"Counter Advantage",
@@ -577,19 +584,22 @@ advMinimal:"⚪ No Clear Weakness",
 advGood:"🔵 Small Weakness",
 advStrong:"🟢 Clear Weakness",
 advExcellent:"🟣 Major Weakness",
+
 help:"How to find enemy troop percentages",
 guideShow:"▼ Show Quick Guide",
 guideHide:"▲ Hide Quick Guide",
+
 donateTitle:"Support the Project",
 donateText:"If this tool has been helpful to you, you can support future updates with a voluntary donation.<br><br>Your support helps keep the project alive and allows new features to be developed.<br><br>Thank you very much! ❤️",
+
 donateBtn:"💛 Donate",
 laterBtn:"✖ Not now",
+
 installTitle:"📲 Install Battle Counter",
 installStep1:"1️⃣ Tap the Share button ⬆️",
 installStep2:"2️⃣ Choose 'Add to Home Screen'",
 installStep3:"3️⃣ Tap 'Add'",
 installOk:"OK",
-
 helpPopup:`
 <h2>📊 Where can I find the enemy troop percentages?</h2>
 
@@ -600,13 +610,12 @@ helpPopup:`
 4. A window will open showing the enemy troop percentages.<br><br>
 5. Enter the Infantry, Cavalry and Marksmen percentages into the Counter Tool.
 </p>
+
 <img src="help.png.PNG" alt="Help" style="display:block;width:100%;height:auto;border-radius:12px;margin:20px 0;">
+
 <button id="closeHelpBtn">Close</button>
 `,
 },
-};
-
-
 function setLang(){
 let l=lang.value,t=text[l];
 const currentMode = mode.value;
