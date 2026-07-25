@@ -341,7 +341,6 @@ Kingshot<br>
 <option value="en">English</option>
 <option value="es">Español</option>
 <option value="de">Deutsch</option>
-<option value="zh">中文</option>
 </select>
 
 <label id="infLabel">Infantry (%)</label>
@@ -547,74 +546,10 @@ helpPopup:`
 <button id="closeHelpBtn">Cerrar</button>
 `,
 },
-zh:{
-    title:`⚔️ Battle<br><span class="subtitle">Counter ⚔️</span>`,
-    lang:"语言",
-    inf:"步兵 (%)",
-    cav:"骑兵 (%)",
-    arc:"射手 (%)",
-    mode:"模式",
-    target:"目标",
-    tier:"敌方等级",
-    same:"同等级",
-    plus1:"敌方高1级",
-    info:"请输入敌方部队百分比。",
-    castle:"🏰 城堡",
-    outpost:"⛺ 前哨",
-    shrine:"🏛️ 圣地 / 要塞",
-calc:"计算克制",
-rally:"🏰 集结队长",
-solo:"⚔️ 单人（城堡）",
-lead:"推荐主力部队",
-dist:"队长",
-fill:"队员",
-counter:"克制",
-enemyFocus:"敌方重点",
-counterLevel:"克制等级",
-counterAdvantage:"克制优势",
-stageBalanced:"均衡",
-stageLight:"轻微",
-stageMedium:"中等",
-stageHeavy:"强力",
-enemyWeakness:"敌方弱点",
-advMinimal:"⚪ 无明显弱点",
-advGood:"🔵 小弱点",
-advStrong:"🟢 明显弱点",
-advExcellent:"🟣 极大弱点",
-help:"如何查看敌方部队比例",
-guideShow:"▼ 显示快速指南",
-guideHide:"▲ 隐藏快速指南",
-
-donateTitle:"支持本项目",
-donateText:"如果这个工具对您有帮助，欢迎支持后续开发。",
-donateBtn:"💛 捐赠",
-laterBtn:"✖ 暂时不用",
-
-installTitle:"📱 安装 Battle Counter",
-installStep1:"1️⃣ 点击分享按钮 ⬆️",
-installStep2:"2️⃣ 选择“添加到主屏幕”",
-installStep3:"3️⃣ 点击“添加”",
-installOk:"确定",
-helpPopup:`
-<h2>📊 在哪里可以找到敌方部队比例？</h2>
-
-<p>
-1. 打开战斗报告。<br><br>
-2. 滚动到 <b>总编队</b>。<br><br>
-3. 点击小小的 <b>ⓘ</b> 图标。<br><br>
-4. 将会显示敌方部队比例。<br><br>
-5. 将步兵、骑兵和射手百分比输入 Battle Counter。
-</p>
-
-<img src="help.png.PNG" alt="帮助" style="display:block;width:100%;height:auto;border-radius:12px;margin:15px 0;">
-
-<button id="closeHelpBtn">关闭</button>
-`,
 };
 
 function setLang(){
 let l=lang.value,t=text[l];
-alert("Sprache: " + l + " / Text gefunden: " + (t ? "JA" : "NEIN"));
 const currentMode = mode.value;
 const currentTarget = target.value;
 title.innerHTML = t.title;
@@ -693,11 +628,7 @@ document.addEventListener("click", function(e){
     }
 });
 window.onload = function () {
-    try {
-        setLang();
-    } catch (e) {
-        alert(e.message);
-    }
+    setLang();
 };
 let guideOpen = false;
 const content = document.getElementById("guideContent");
