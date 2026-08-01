@@ -244,6 +244,7 @@ const enemy = sorted[0][0];
 const highest = sorted[0][1];
 const second = sorted[1][1];
 const tie = highest === second;
+const gap = highest - second;
 const counter = {
     Infantry:"Marksmen",
     Marksmen:"Cavalry",
@@ -272,7 +273,11 @@ if(tie){
     }
 }
 let percent = 42;
+const tier = enemyTier.value;
 
+if(tier === "plus1"){
+    percent -= 3;
+}
 if(highest >= 75){
     percent = 66;
 }
@@ -284,6 +289,20 @@ else if(highest >= 55){
 }
 else if(highest >= 45){
     percent = 48;
+}
+let advantage = "Balanced";
+
+if(gap >= 40){
+    advantage = "Extreme";
+}
+else if(gap >= 25){
+    advantage = "High";
+}
+else if(gap >= 15){
+    advantage = "Medium";
+}
+else if(gap >= 5){
+    advantage = "Low";
 }
 function dist(main,p){
 
@@ -309,12 +328,27 @@ function dist(main,p){
 
     return d;
 }
+   
+if(advantage === "Extreme"){
+    percent += 4;
+}
+else if(advantage === "High"){
+    percent += 2;
+}
+else if(advantage === "Balanced"){
+    percent -= 2;
+}
+
+if(percent > 70) percent = 70;
+if(percent < 45) percent = 45;
 
 const d = dist(main, percent);
 out.innerHTML = `
 <b>⚔️ All Out Counter</b><br><br>
 <b>${t.enemyFocus}:</b>
-${tie ? "Mixed (" + highest + "% / " + second + "%)" : names[l][enemy] + " (" + highest + "%)"}<br><br>
+${tie ? "Mixed (" + highest + "% / " + second + "%)" : names[l][enemy] + " (" + highest + "%)"}<br>
+
+<b>Counter Strength:</b> ${advantage}<br><br>
 
 <b>${t.lead}:</b><br>
 ${d.Infantry}% ${names[l].Infantry}<br>
