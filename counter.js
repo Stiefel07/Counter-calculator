@@ -341,7 +341,9 @@ else if(advantage === "Balanced"){
 
 if(percent > 70) percent = 70;
 if(percent < 45) percent = 45;
-
+if(tier === "plus1"){
+    percent -= 3;
+}
 const d = dist(main, percent);
 out.innerHTML = `
 <b>⚔️ All Out Counter</b><br><br>
