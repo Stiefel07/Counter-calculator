@@ -283,19 +283,19 @@ else if(highest >= 55){
 else if(highest >= 45){
     percent = 52;
 }
-let counterStrength = "Balanced";
+let advantage = "Balanced";
 
 if(gap >= 40){
-    counterStrength = "Extreme";
+    advantage = "Extreme";
 }
 else if(gap >= 25){
-    counterStrength = "High";
+    advantage = "High";
 }
 else if(gap >= 15){
-    counterStrength = "Medium";
+    advantage = "Medium";
 }
 else if(gap >= 5){
-    counterStrength = "Low";
+    advantage = "Low";
 }
 }
 function dist(main,p){
@@ -328,7 +328,7 @@ out.innerHTML = `
 <b>⚔️ All Out Counter</b><br><br>
 <b>${t.enemyFocus}:</b>
 ${tie ? "Mixed (" + highest + "% / " + second + "%)" : names[l][enemy] + " (" + highest + "%)"}<br><br>
-<b>Counter Strength:</b> ${counterStrength}<br><br>
+
 <b>${t.lead}:</b><br>
 ${d.Infantry}% ${names[l].Infantry}<br>
 ${d.Cavalry}% ${names[l].Cavalry}<br>
