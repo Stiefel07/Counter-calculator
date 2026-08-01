@@ -200,7 +200,7 @@ if(tier === "plus1"){
     }
     else if(advantage === t.advGood){
         advantage = t.advMinimal;
-    }
+    
 }
 
 out.innerHTML = `
