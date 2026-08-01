@@ -294,9 +294,10 @@ if(percent > 70){
 if(percent < 42){
     percent = 42;
 }
-let advantage = "Balanced";
-
-if(gap >= 40){
+if(tier === "plus1"){
+    advantage = "Reduced";
+}
+else if(gap >= 40){
     advantage = "Extreme";
 }
 else if(gap >= 25){
@@ -307,6 +308,9 @@ else if(gap >= 15){
 }
 else if(gap >= 5){
     advantage = "Low";
+}
+else{
+    advantage = "Balanced";
 }
 if(tie){
     advantage = (tier === "plus1") ? "Balanced" : "Good";
