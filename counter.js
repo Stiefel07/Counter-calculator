@@ -246,6 +246,7 @@ const highest = sorted[0][1];
 const second = sorted[1][1];
 const gap = highest - second;
 const tie = highest === second;
+const gap = highest - second;
 const counter = {
     Infantry:"Marksmen",
     Marksmen:"Cavalry",
