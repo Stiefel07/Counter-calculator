@@ -281,6 +281,13 @@ if(tie){
 }
 else{
     percent = Math.round(highest * 0.8 + 14);
+
+if(gap >= 20){
+    percent += 2;
+}
+
+if(gap >= 35){
+    percent += 2;
 }
 
 if(gap <= 2){
