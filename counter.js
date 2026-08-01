@@ -272,8 +272,16 @@ if(tie){
         main = "Infantry";
     }
 }
-let percent = 45;
 const tier = enemyTier.value;
+
+let percent;
+
+if (tier === "same") {
+    percent = 45;
+} else {
+    percent = 40;
+}
+
 let advantage = "Balanced";
 
 if(gap >= 40){
