@@ -286,7 +286,7 @@ else if(highest >= 55){
 }
 else if(highest >= 45){
     percent = 48;
-}
+
 let advantage = "Balanced";
 
 if(gap >= 40){
