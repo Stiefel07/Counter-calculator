@@ -279,7 +279,7 @@ let percent;
 if (tier === "same") {
     percent = 45;
 } else {
-    percent = 40;
+    percent = 39;
 }
 
 let advantage = "Balanced";
