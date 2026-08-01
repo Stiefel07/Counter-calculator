@@ -243,8 +243,6 @@ const sorted = Object.entries(vals).sort((a,b)=>b[1]-a[1]);
 const enemy = sorted[0][0];
 const highest = sorted[0][1];
 const second = sorted[1][1];
-const gap = highest - second;
-const second = sorted[1][1];
 const tie = highest === second;
 const counter = {
     Infantry:"Marksmen",
@@ -273,20 +271,16 @@ if(tie){
         main = "Infantry";
     }
 }
-let percent = 42;
+let percent = 45;
 
-if(highest >= 75){
-    percent = 66;
-}
-else if(highest >= 65){
-    percent = 60;
+if(highest >= 70){
+    percent = 64;
 }
 else if(highest >= 55){
-    percent = 54;
+    percent = 58;
 }
 else if(highest >= 45){
-    percent = 48;
-}
+    percent = 52;
 }
 function dist(main,p){
 
