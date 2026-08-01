@@ -300,7 +300,7 @@ else if(gap >= 15){
 }
 else if(gap >= 5){
     advantage = "Low";
-
+}
 }
 let advantage = "Balanced";
 
