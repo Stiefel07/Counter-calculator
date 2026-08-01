@@ -284,7 +284,7 @@ else if(highest >= 45){
     percent = 52;
 }
 let advantage = "Balanced";
-
+console.log(gap);
 if(gap >= 40){
     advantage = "Extreme";
 }
