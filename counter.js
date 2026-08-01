@@ -216,7 +216,7 @@ copyBtn.innerText=t.copy;
 }else{
 out.innerHTML="<b>"+t.lead+":</b><br>"+dist(main,leaderPercent);
 copyBtn.style.display="none";
-}
+
 }
 }
  
