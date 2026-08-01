@@ -243,24 +243,48 @@ const sorted = Object.entries(vals).sort((a,b)=>b[1]-a[1]);
 
 const enemy = sorted[0][0];
 const highest = sorted[0][1];
-
+const second = sorted[1][1];
+const tie = highest === second;
 const counter = {
     Infantry:"Marksmen",
     Marksmen:"Cavalry",
     Cavalry:"Infantry"
 };
 
-const main = counter[enemy];
-let percent = 45;
+let main = counter[enemy];
 
-if(highest >= 70){
-    percent = 64;
+if(tie){
+    if(
+        (enemy === "Infantry" && sorted[1][0] === "Marksmen") ||
+        (enemy === "Marksmen" && sorted[1][0] === "Infantry")
+    ){
+        main = "Cavalry";
+    }
+
+    else if(
+        (enemy === "Infantry" && sorted[1][0] === "Cavalry") ||
+        (enemy === "Cavalry" && sorted[1][0] === "Infantry")
+    ){
+        main = "Marksmen";
+    }
+
+    else{
+        main = "Infantry";
+    }
+}
+let percent = 42;
+
+if(highest >= 75){
+    percent = 66;
+}
+else if(highest >= 65){
+    percent = 60;
 }
 else if(highest >= 55){
-    percent = 58;
+    percent = 54;
 }
 else if(highest >= 45){
-    percent = 52;
+    percent = 48;
 }
 function dist(main,p){
 
@@ -290,7 +314,8 @@ function dist(main,p){
 const d = dist(main, percent);
 out.innerHTML = `
 <b>⚔️ All Out Counter</b><br><br>
-<b>${t.enemyFocus}:</b> ${names[l][enemy]} (${highest}%)<br><br>
+<b>${t.enemyFocus}:</b>
+${tie ? "Mixed (" + highest + "% / " + second + "%)" : names[l][enemy] + " (" + highest + "%)"}<br><br>
 
 <b>${t.lead}:</b><br>
 ${d.Infantry}% ${names[l].Infantry}<br>
