@@ -273,6 +273,11 @@ if(tie){
 }
 let percent = 45;
 const tier = enemyTier.value;
+let advantage = "Balanced";
+
+if(gap >= 40){
+    advantage = "Extreme";
+}
 if(highest >= 70){
     percent = 64;
 }
