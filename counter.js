@@ -310,7 +310,8 @@ function dist(main,p){
 const d = dist(main, percent);
 out.innerHTML = `
 <b>⚔️ All Out Counter</b><br><br>
-<b>${t.enemyFocus}:</b> ${names[l][enemy]} (${highest}%)<br><br>
+<b>${t.enemyFocus}:</b>
+${tie ? "Mixed (" + highest + "% / " + second + "%)" : names[l][enemy] + " (" + highest + "%)"}<br><br>
 
 <b>${t.lead}:</b><br>
 ${d.Infantry}% ${names[l].Infantry}<br>
