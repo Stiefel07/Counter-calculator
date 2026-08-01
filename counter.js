@@ -287,10 +287,9 @@ else if(highest >= 55){
 }
 else if(highest >= 45){
     percent = 52;
-
-    if(tier === "plus1"){
+  }
+if(tier === "plus1"){
     percent -= 3;
-}
 }
 function dist(main,p){
 
