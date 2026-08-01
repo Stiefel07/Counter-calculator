@@ -178,7 +178,7 @@ if(mode.value==="rally"){
 let leader=dist(main,leaderPercent);
 let fillers=dist(main,fillerPercent);
 let advantage;
-
+}
 if(stage === "Balanced Counter"){
     advantage = t.advMinimal;
 }
