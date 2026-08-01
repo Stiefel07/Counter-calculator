@@ -221,10 +221,22 @@ copyBtn.style.display="none";
 }
  
 function calcAllOut(){
+
+const l = lang.value;
+const t = text[l];
+
+const names = {
+    de:{Infantry:"Infanterie",Cavalry:"Kavallerie",Marksmen:"Schützen"},
+    en:{Infantry:"Infantry",Cavalry:"Cavalry",Marksmen:"Marksmen"},
+    es:{Infantry:"Infantería",Cavalry:"Caballería",Marksmen:"Tiradores"},
+    zh:{Infantry:"步兵",Cavalry:"骑兵",Marksmen:"射手"}
+};
+
 const vals = {
     Infantry:+inf.value,
     Cavalry:+cav.value,
     Marksmen:+arc.value
+};
 };
 
 const sorted = Object.entries(vals).sort((a,b)=>b[1]-a[1]);
