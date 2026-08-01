@@ -328,7 +328,7 @@ out.innerHTML = `
 <b>⚔️ All Out Counter</b><br><br>
 <b>${t.enemyFocus}:</b>
 ${tie ? "Mixed (" + highest + "% / " + second + "%)" : names[l][enemy] + " (" + highest + "%)"}<br><br>
-
+<b>Counter Strength:</b> ${counterStrength}<br><br>
 <b>${t.lead}:</b><br>
 ${d.Infantry}% ${names[l].Infantry}<br>
 ${d.Cavalry}% ${names[l].Cavalry}<br>
