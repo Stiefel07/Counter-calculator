@@ -173,11 +173,11 @@ for(let k of keys){
 }
 return `${d.Infantry}% ${names[l].Infantry}<br>${d.Cavalry}% ${names[l].Cavalry}<br>${d.Marksmen}% ${names[l].Marksmen}`;
 }
-
-if(mode.value==="rally"){
 let leader=dist(main,leaderPercent);
 let fillers=dist(main,fillerPercent);
 let advantage;
+if(mode.value==="rally"){
+
 }
 if(stage === "Balanced Counter"){
     advantage = t.advMinimal;
@@ -281,7 +281,7 @@ if(tie){
 }
 else{
     percent = Math.round(highest * 0.8 + 14);
-
+}
 if(gap >= 20){
     percent += 2;
 }
@@ -301,6 +301,8 @@ if(percent > 70){
 if(percent < 42){
     percent = 42;
 }
+}
+let advantage;
 if(tier === "plus1"){
     advantage = "Reduced";
 }
@@ -378,7 +380,7 @@ ${d.Marksmen}% ${names[l].Marksmen}
 
 copyBtn.style.display = "none";
 }
-
+}
 function copyResult(){
 
     const temp = document.createElement("div");
