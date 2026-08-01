@@ -271,16 +271,19 @@ if(tie){
         main = "Infantry";
     }
 }
-let percent = 45;
+let percent = 42;
 
-if(highest >= 70){
-    percent = 64;
+if(highest >= 75){
+    percent = 66;
+}
+else if(highest >= 65){
+    percent = 60;
 }
 else if(highest >= 55){
-    percent = 58;
+    percent = 54;
 }
 else if(highest >= 45){
-    percent = 52;
+    percent = 48;
 }
 function dist(main,p){
 
