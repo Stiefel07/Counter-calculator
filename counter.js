@@ -288,17 +288,15 @@ if(gap >= 40){
     advantage = "Extreme";
 }
 if(highest >= 70){
-    percent = 64;
+    percent = (tier === "plus1") ? 71 : 64;
 }
 else if(highest >= 55){
-    percent = 58;
+    percent = (tier === "plus1") ? 64 : 58;
 }
-else if(highest >= 45){
-    percent = 52;
-  }
-if(tier === "plus1"){
-    percent -= 3;
+else{
+    percent = (tier === "plus1") ? 50 : 45;
 }
+
 function dist(main,p){
 
     let rest = 100 - p;
