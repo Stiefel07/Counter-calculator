@@ -1,6 +1,17 @@
 // Kingshot Counter Tool
 // Counter Logic
 // © Stiefel™
+const inf = document.getElementById("inf");
+const cav = document.getElementById("cav");
+const arc = document.getElementById("arc");
+
+const mode = document.getElementById("mode");
+const target = document.getElementById("target");
+const enemyTier = document.getElementById("enemyTier");
+const lang = document.getElementById("lang");
+
+const out = document.getElementById("out");
+const copyBtn = document.getElementById("copyBtn");
 function autoFill(changed){
     let i = parseInt(inf.value) || 0;
     let c = parseInt(cav.value) || 0;
