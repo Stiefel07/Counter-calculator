@@ -307,17 +307,17 @@ if(tier === "plus1"){
 else if(gap >= 40){
     advantage = "Extreme";
 }
-else if(gap >= 25){
+else if(gap >= 30){
     advantage = "High";
 }
-else if(gap >= 15){
-    advantage = "Medium";
+else if(gap >= 20){
+    advantage = "Good";
 }
-else if(gap >= 5){
-    advantage = "Low";
+else if(gap >= 10){
+    advantage = "Balanced";
 }
 else{
-    advantage = "Balanced";
+    advantage = "Low";
 }
 if(tie){
     advantage = (tier === "plus1") ? "Balanced" : "Good";
