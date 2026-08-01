@@ -276,8 +276,12 @@ const gap = highest - second;
 let percent = 42;
 
 const tier = enemyTier.value;
-
-percent = Math.round(highest * 0.8 + 14);
+if(tie){
+    percent = (tier === "plus1") ? 39 : 42;
+}
+else{
+    percent = Math.round(highest * 0.8 + 14);
+}
 
 if(gap <= 2){
     percent -= 2;
