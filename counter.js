@@ -229,7 +229,7 @@ const names = {
     de:{Infantry:"Infanterie",Cavalry:"Kavallerie",Marksmen:"Schützen"},
     en:{Infantry:"Infantry",Cavalry:"Cavalry",Marksmen:"Marksmen"},
     es:{Infantry:"Infantería",Cavalry:"Caballería",Marksmen:"Tiradores"},
-    zh:{Infantry:"步兵",Cavalry:"骑兵",Marksmen:"射手"}
+    
 };
 
 const vals = {
@@ -283,7 +283,7 @@ else if(highest >= 45){
     percent = 52;
 if(tier === "plus1"){
     percent -= 3;
-}
+
 }
 function dist(main,p){
 
