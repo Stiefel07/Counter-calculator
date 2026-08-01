@@ -272,7 +272,7 @@ if(tie){
     }
 }
 let percent = 45;
-
+const tier = enemyTier.value;
 if(highest >= 70){
     percent = 64;
 }
@@ -281,6 +281,9 @@ else if(highest >= 55){
 }
 else if(highest >= 45){
     percent = 52;
+if(tier === "plus1"){
+    percent -= 3;
+}
 }
 function dist(main,p){
 
