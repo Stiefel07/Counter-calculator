@@ -366,6 +366,7 @@ Kingshot<br>
     <option value="castle">🏰 Castle</option>
     <option value="outpost">🏕️ Outpost</option>
     <option value="shrine">🏛️ Shrine / Fortress</option>
+    <option value="allout">⚔️ All Out</option>
 </select>
 <button id="calcBtn" onclick="calc()"></button>
 
@@ -391,6 +392,7 @@ info:"Gib zuerst die Truppenverteilung des Gegners in Prozent ein.",
 castle:"🏰 Burg",
 outpost:"🏕️ Außenposten",
 shrine:"🏛️ Heiligtum / Festung",
+allout:"⚔️ All Out",
 calc:"Konter berechnen",
 rally:"🏰 Rallyeführer",solo:"⚔️ Solo (Schloss)",
 lead:"Empfohlene Haupttruppe",dist:"Anführer",fill:"Füller",counter:"Kontert",copy:"In Chat kopieren",copied:"Kopiert!",
@@ -447,6 +449,7 @@ info:"Enter the enemy troop percentages below.",
 castle:"🏰 Castle",
 outpost:"🏕️ Outpost",
 shrine:"🏛️ Shrine / Fortress",
+allout:"⚔️ All Out",
 calc:"Calculate Counter",
 rally:"🏰 Rally Leader",solo:"⚔️ Solo (Castle)",
 lead:"Recommended Main Troop",dist:"Leader",fill:"Fillers",counter:"Counters",copy:"Copy to Chat",copied:"Copied!",
@@ -503,6 +506,7 @@ info:"Introduce los porcentajes de tropas enemigas.",
 castle:"🏰 Castillo",
 outpost:"🏕️ Puesto avanzado",
 shrine:"🏛️ Santuario / Fortaleza",
+allout:"⚔️ All Out",
 calc:"Calcular Contraataque",
 rally:"🏰 Líder de Rally",solo:"⚔️ Solo (Castillo)",
 lead:"Tropa principal recomendada",dist:"Líder",fill:"Participantes",counter:"Contrarresta",copy:"Copiar al chat",copied:"¡Copiado!",
@@ -599,6 +603,7 @@ target.innerHTML="";
 target.add(new Option(t.castle,"castle"));
 target.add(new Option(t.outpost,"outpost"));
 target.add(new Option(t.shrine,"shrine"));
+target.add(new Option(t.allout,"allout"));
 target.value = currentTarget || "castle";
 enemyTier.innerHTML = "";
 enemyTier.add(new Option(t.same,"same"));
