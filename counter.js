@@ -242,14 +242,35 @@ const sorted = Object.entries(vals).sort((a,b)=>b[1]-a[1]);
 
 const enemy = sorted[0][0];
 const highest = sorted[0][1];
-
+const second = sorted[1][1];
+const tie = highest === second;
 const counter = {
     Infantry:"Marksmen",
     Marksmen:"Cavalry",
     Cavalry:"Infantry"
 };
 
-const main = counter[enemy];
+let main = counter[enemy];
+
+if(tie){
+    if(
+        (enemy === "Infantry" && sorted[1][0] === "Marksmen") ||
+        (enemy === "Marksmen" && sorted[1][0] === "Infantry")
+    ){
+        main = "Cavalry";
+    }
+
+    else if(
+        (enemy === "Infantry" && sorted[1][0] === "Cavalry") ||
+        (enemy === "Cavalry" && sorted[1][0] === "Infantry")
+    ){
+        main = "Marksmen";
+    }
+
+    else{
+        main = "Infantry";
+    }
+}
 let percent = 45;
 
 if(highest >= 70){
