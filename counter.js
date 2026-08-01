@@ -288,13 +288,13 @@ if(gap >= 40){
     advantage = "Extreme";
 }
 if(highest >= 70){
-    percent = (tier === "plus1") ? 71 : 64;
+    percent = (tier === "plus1") ? 70 : 64;
 }
 else if(highest >= 55){
     percent = (tier === "plus1") ? 64 : 58;
 }
 else{
-    percent = (tier === "plus1") ? 50 : 45;
+    percent = (tier === "plus1") ? 51 : 45;
 }
 
 function dist(main,p){
