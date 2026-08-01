@@ -178,7 +178,6 @@ let fillers=dist(main,fillerPercent);
 let advantage;
 if(mode.value==="rally"){
 
-}
 if(stage === "Balanced Counter"){
     advantage = t.advMinimal;
 }
@@ -213,6 +212,7 @@ out.innerHTML = `
 `;
 copyBtn.style.display="block";
 copyBtn.innerText=t.copy;
+}
 }else{
 out.innerHTML="<b>"+t.lead+":</b><br>"+dist(main,leaderPercent);
 copyBtn.style.display="none";
