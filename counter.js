@@ -221,11 +221,72 @@ copyBtn.style.display="none";
 }
  
 function calcAllOut(){
+const vals = {
+    Infantry:+inf.value,
+    Cavalry:+cav.value,
+    Marksmen:+arc.value
+};
 
-    out.innerHTML = "<b>⚔️ All Out Mode</b><br><br>Coming soon...";
+const sorted = Object.entries(vals).sort((a,b)=>b[1]-a[1]);
 
-    copyBtn.style.display = "none";
+const enemy = sorted[0][0];
+const highest = sorted[0][1];
 
+const counter = {
+    Infantry:"Marksmen",
+    Marksmen:"Cavalry",
+    Cavalry:"Infantry"
+};
+
+const main = counter[enemy];
+let percent = 45;
+
+if(highest >= 70){
+    percent = 64;
+}
+else if(highest >= 55){
+    percent = 58;
+}
+else if(highest >= 45){
+    percent = 52;
+}
+function dist(main,p){
+
+    let rest = 100 - p;
+    let side = Math.floor(rest / 2);
+
+    let d = {
+        Infantry:side,
+        Cavalry:side,
+        Marksmen:side
+    };
+
+    d[main] = p;
+
+    let rem = 100 - (d.Infantry + d.Cavalry + d.Marksmen);
+
+    if(main !== "Infantry"){
+        d.Infantry += rem;
+    }
+    else{
+        d.Cavalry += rem;
+    }
+
+    return d;
+}
+
+const d = dist(main, percent);
+out.innerHTML = `
+<b>⚔️ All Out Counter</b><br><br>
+<b>${t.enemyFocus}:</b> ${names[l][enemy]} (${highest}%)<br><br>
+
+<b>${t.lead}:</b><br>
+${d.Infantry}% ${names[l].Infantry}<br>
+${d.Cavalry}% ${names[l].Cavalry}<br>
+${d.Marksmen}% ${names[l].Marksmen}
+`;
+
+copyBtn.style.display = "none";
 }
 
 function copyResult(){
