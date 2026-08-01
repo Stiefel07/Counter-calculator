@@ -283,19 +283,20 @@ else if(highest >= 55){
 else if(highest >= 45){
     percent = 52;
 }
-let advantage = "Balanced";
-console.log(gap);
+let counterStrength = "Balanced";
+
 if(gap >= 40){
-    advantage = "Extreme";
+    counterStrength = "Extreme";
 }
 else if(gap >= 25){
-    advantage = "High";
+    counterStrength = "High";
 }
 else if(gap >= 15){
-    advantage = "Medium";
+    counterStrength = "Medium";
 }
 else if(gap >= 5){
-    advantage = "Low";
+    counterStrength = "Low";
+}
 }
 function dist(main,p){
 
