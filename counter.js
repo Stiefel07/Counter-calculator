@@ -213,7 +213,7 @@ out.innerHTML = `
 copyBtn.style.display="block";
 copyBtn.innerText=t.copy;
 }
-}else{
+else{
 out.innerHTML="<b>"+t.lead+":</b><br>"+dist(main,leaderPercent);
 copyBtn.style.display="none";
 
@@ -229,7 +229,7 @@ const names = {
     de:{Infantry:"Infanterie",Cavalry:"Kavallerie",Marksmen:"Schützen"},
     en:{Infantry:"Infantry",Cavalry:"Cavalry",Marksmen:"Marksmen"},
     es:{Infantry:"Infantería",Cavalry:"Caballería",Marksmen:"Tiradores"},
-    zh:{Infantry:"步兵",Cavalry:"骑兵",Marksmen:"射手"}
+    
 };
 
 const vals = {
