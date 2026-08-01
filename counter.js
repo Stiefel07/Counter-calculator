@@ -330,7 +330,7 @@ out.innerHTML = `
 <b>${t.enemyFocus}:</b>
 ${tie ? "Mixed (" + highest + "% / " + second + "%)" : names[l][enemy] + " (" + highest + "%)"}<br><br>
 
-<b>${t.lead}:</b><br>
+<b>${t.troopDistribution}:</b><br>
 ${d.Infantry}% ${names[l].Infantry}<br>
 ${d.Cavalry}% ${names[l].Cavalry}<br>
 ${d.Marksmen}% ${names[l].Marksmen}
