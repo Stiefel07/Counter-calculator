@@ -20,7 +20,11 @@ function autoFill(changed){
 }
 function calc(){
 let i=+inf.value,c=+cav.value,a=+arc.value;
-
+const allout = target.value === "allout";
+if (allout) {
+    calcAllOut();
+    return;
+}
 if(i+c+a!==100){
     out.innerHTML="<b>100% required.</b>";
     return;
@@ -202,6 +206,15 @@ copyBtn.innerText=t.copy;
 out.innerHTML="<b>"+t.lead+":</b><br>"+dist(main,leaderPercent);
 copyBtn.style.display="none";
 }
+}
+}
+ 
+function calcAllOut(){
+
+    out.innerHTML = "<b>⚔️ All Out Mode</b><br><br>Coming soon...";
+
+    copyBtn.style.display = "none";
+
 }
 
 function copyResult(){
