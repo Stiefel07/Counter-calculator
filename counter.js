@@ -200,7 +200,7 @@ if(tier === "plus1"){
     }
     else if(advantage === t.advGood){
         advantage = t.advMinimal;
-    
+    }
 }
 
 out.innerHTML = `
@@ -271,7 +271,7 @@ if(tie){
     else{
         main = "Infantry";
     }
-const gap = highest - second;
+
 }
 let percent = 42;
 
