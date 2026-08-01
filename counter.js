@@ -308,6 +308,9 @@ else if(gap >= 15){
 else if(gap >= 5){
     advantage = "Low";
 }
+if(tie){
+    advantage = (tier === "plus1") ? "Balanced" : "Good";
+}
 function dist(main,p){
 
     let rest = 100 - p;
