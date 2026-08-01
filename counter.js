@@ -274,24 +274,20 @@ if(tie){
 const gap = highest - second;
 }
 let percent = 42;
+
 const tier = enemyTier.value;
 
-if(tier === "plus1"){
-    percent -= 3;
-}
-if(highest >= 75){
-    percent = 66;
-}
-else if(highest >= 65){
-    percent = 60;
-}
-else if(highest >= 55){
-    percent = 54;
-}
-else if(highest >= 45){
-    percent = 48;
-}
+percent = Math.round(highest * 0.8 + 14);
+
 if(gap <= 2){
+    percent -= 2;
+}
+
+if(percent > 70){
+    percent = 70;
+}
+
+if(percent < 42){
     percent = 42;
 }
 let advantage = "Balanced";
