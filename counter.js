@@ -282,6 +282,20 @@ else if(highest >= 55){
 else if(highest >= 45){
     percent = 52;
 }
+let advantage = "Balanced";
+
+if(gap >= 40){
+    advantage = "Extreme";
+}
+else if(gap >= 25){
+    advantage = "High";
+}
+else if(gap >= 15){
+    advantage = "Medium";
+}
+else if(gap >= 5){
+    advantage = "Low";
+}
 function dist(main,p){
 
     let rest = 100 - p;
